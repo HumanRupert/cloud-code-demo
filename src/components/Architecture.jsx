@@ -265,7 +265,7 @@ export default function Architecture() {
   const totalGroups = paymentGroups.length;
 
   return (
-    <section ref={ref} className="py-32 px-6 bg-gradient-to-b from-[#fafafa] to-gray-50 overflow-hidden">
+    <section id="architecture" ref={ref} className="py-32 px-6 bg-gradient-to-b from-[#fafafa] to-gray-50 overflow-hidden">
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <motion.div

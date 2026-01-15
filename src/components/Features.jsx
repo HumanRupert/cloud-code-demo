@@ -128,7 +128,7 @@ export default function Features() {
   const content = tabContent[activeTab];
 
   return (
-    <section ref={ref} className="py-32 px-6 bg-white">
+    <section id="product" ref={ref} className="py-32 px-6 bg-white">
       <div className="max-w-5xl mx-auto">
         {/* Section Header */}
         <motion.div

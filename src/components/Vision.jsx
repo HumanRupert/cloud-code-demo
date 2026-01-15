@@ -89,7 +89,7 @@ export default function Vision() {
   const isIntroInView = useInView(introRef, { once: true, margin: '-100px' });
 
   return (
-    <section className="py-32 px-6 bg-[#fafafa]">
+    <section id="vision" className="py-32 px-6 bg-[#fafafa]">
       <div className="max-w-6xl mx-auto">
         {/* Intro Text */}
         <motion.div

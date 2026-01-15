@@ -41,8 +41,8 @@ export default function Navbar() {
           <a href="#architecture" className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors">
             How it Works
           </a>
-          <a href="#features" className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors">
-            Features
+          <a href="#product" className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors">
+            Product
           </a>
         </div>
 
