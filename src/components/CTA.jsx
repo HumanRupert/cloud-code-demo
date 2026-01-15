@@ -10,7 +10,7 @@ export default function CTA() {
   return (
     <section ref={ref} id="cta" className="py-32 px-6 relative overflow-hidden">
       {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-sky-50 via-blue-50/50 to-cyan-50/30 dark:from-zinc-900 dark:via-zinc-900/95 dark:to-zinc-950" />
+      <div className="absolute inset-0 bg-gradient-to-br from-sky-50 via-blue-50/50 to-cyan-50/30" />
 
       {/* Animated background shapes */}
       <motion.div
@@ -25,7 +25,7 @@ export default function CTA() {
             y: [0, -20, 0],
           }}
           transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-          className="absolute -top-32 -right-32 w-96 h-96 bg-gradient-to-br from-sky-200/40 to-blue-200/30 dark:from-sky-500/20 dark:to-blue-500/15 rounded-full blur-3xl"
+          className="absolute -top-32 -right-32 w-96 h-96 bg-gradient-to-br from-sky-200/40 to-blue-200/30 rounded-full blur-3xl"
         />
         <motion.div
           animate={{
@@ -33,13 +33,13 @@ export default function CTA() {
             y: [0, 30, 0],
           }}
           transition={{ duration: 25, repeat: Infinity, ease: 'linear' }}
-          className="absolute -bottom-32 -left-32 w-96 h-96 bg-gradient-to-br from-blue-200/30 to-cyan-200/20 dark:from-blue-500/15 dark:to-cyan-500/10 rounded-full blur-3xl"
+          className="absolute -bottom-32 -left-32 w-96 h-96 bg-gradient-to-br from-blue-200/30 to-cyan-200/20 rounded-full blur-3xl"
         />
       </motion.div>
 
       {/* Grid pattern */}
       <div
-        className="absolute inset-0 opacity-[0.02] dark:opacity-[0.03]"
+        className="absolute inset-0 opacity-[0.02]"
         style={{
           backgroundImage: `radial-gradient(circle at 1px 1px, rgb(128,128,128) 1px, transparent 0)`,
           backgroundSize: '40px 40px',
@@ -52,7 +52,7 @@ export default function CTA() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-6">
             Ready for{' '}
             <span className="gradient-text">Agentic Commerce</span>?
           </h2>
@@ -62,7 +62,7 @@ export default function CTA() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-          className="text-lg sm:text-xl text-gray-500 dark:text-gray-400 mb-10 max-w-2xl mx-auto leading-relaxed"
+          className="text-lg sm:text-xl text-gray-500 mb-10 max-w-2xl mx-auto leading-relaxed"
         >
           Let's talk through your infrastructure, your compliance needs, and how agents fit into your payment stack.
         </motion.p>
@@ -76,7 +76,7 @@ export default function CTA() {
             as="a"
             href="mailto:partners@semantic.dev"
             magneticStrength={0.25}
-            className="group inline-flex items-center gap-3 px-10 py-5 bg-gray-900 dark:bg-white text-white dark:text-gray-900 font-medium rounded-full text-lg shadow-xl shadow-gray-900/20 dark:shadow-white/10 relative overflow-hidden cursor-pointer"
+            className="group inline-flex items-center gap-3 px-10 py-5 bg-gray-900 text-white font-medium rounded-full text-lg shadow-xl shadow-gray-900/20 relative overflow-hidden cursor-pointer"
           >
             {/* Gradient overlay on hover */}
             <div className="absolute inset-0 bg-gradient-to-r from-sky-500 via-blue-500 to-sky-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -100,7 +100,7 @@ export default function CTA() {
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ duration: 0.8, delay: 0.5 }}
-          className="mt-12 flex flex-wrap items-center justify-center gap-6 text-sm text-gray-400 dark:text-gray-500"
+          className="mt-12 flex flex-wrap items-center justify-center gap-6 text-sm text-gray-400"
         >
           <div className="flex items-center gap-2">
             <svg className="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">

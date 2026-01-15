@@ -23,7 +23,7 @@ const FloatingOrb = ({ className, delay = 0, parallaxY }) => (
 );
 
 const ImageSkeleton = () => (
-  <div className="h-6 w-20 bg-gray-200 dark:bg-zinc-700 rounded animate-pulse" />
+  <div className="h-6 w-20 bg-gray-200 rounded animate-pulse" />
 );
 
 const LogoImage = ({ src, alt }) => {
@@ -56,7 +56,7 @@ const LogoCarousel = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 1.2 }}
-        className="text-sm text-gray-400 dark:text-gray-500 uppercase tracking-widest text-center mb-8"
+        className="text-sm text-gray-400 uppercase tracking-widest text-center mb-8"
       >
         Built by Experts from
       </motion.p>
@@ -68,14 +68,14 @@ const LogoCarousel = () => {
         className="relative"
       >
         {/* Fade edges */}
-        <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-[#fafafa] dark:from-zinc-950 to-transparent z-10" />
-        <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-[#fafafa] dark:from-zinc-950 to-transparent z-10" />
+        <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-[#fafafa] to-transparent z-10" />
+        <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-[#fafafa] to-transparent z-10" />
 
         <div className="flex animate-scroll-logos">
           {duplicatedLogos.map((company, index) => (
             <div
               key={`${company.name}-${index}`}
-              className="flex-shrink-0 mx-8 h-8 flex items-center justify-center grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-500 dark:invert dark:hover:invert-0"
+              className="flex-shrink-0 mx-8 h-8 flex items-center justify-center grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-500"
             >
               <LogoImage src={company.logo} alt={company.name} />
             </div>
@@ -121,7 +121,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex flex-col justify-center items-center px-6 pt-24 pb-16 overflow-hidden bg-[#fafafa] dark:bg-zinc-950">
+    <section className="relative min-h-screen flex flex-col justify-center items-center px-6 pt-24 pb-16 overflow-hidden bg-[#fafafa]">
       {/* Animated Background Orbs with Parallax */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
@@ -133,17 +133,17 @@ export default function Hero() {
           className="absolute inset-0"
         >
           <FloatingOrb
-            className="w-[600px] h-[600px] -top-48 -right-48 bg-gradient-to-br from-sky-200/40 to-blue-200/30 dark:from-sky-500/20 dark:to-blue-500/15"
+            className="w-[600px] h-[600px] -top-48 -right-48 bg-gradient-to-br from-sky-200/40 to-blue-200/30"
             delay={0}
             parallaxY={smoothY1}
           />
           <FloatingOrb
-            className="w-[400px] h-[400px] top-1/3 -left-32 bg-gradient-to-br from-blue-200/30 to-cyan-200/20 dark:from-blue-500/15 dark:to-cyan-500/10"
+            className="w-[400px] h-[400px] top-1/3 -left-32 bg-gradient-to-br from-blue-200/30 to-cyan-200/20"
             delay={0.2}
             parallaxY={smoothY2}
           />
           <FloatingOrb
-            className="w-[300px] h-[300px] bottom-32 right-1/4 bg-gradient-to-br from-cyan-200/25 to-sky-200/20 dark:from-cyan-500/15 dark:to-sky-500/10"
+            className="w-[300px] h-[300px] bottom-32 right-1/4 bg-gradient-to-br from-cyan-200/25 to-sky-200/20"
             delay={0.4}
             parallaxY={smoothY3}
           />
@@ -151,7 +151,7 @@ export default function Hero() {
 
         {/* Grid pattern overlay */}
         <div
-          className="absolute inset-0 opacity-[0.015] dark:opacity-[0.03]"
+          className="absolute inset-0 opacity-[0.015]"
           style={{
             backgroundImage: `linear-gradient(rgba(128,128,128,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(128,128,128,0.3) 1px, transparent 1px)`,
             backgroundSize: '60px 60px',
@@ -164,7 +164,7 @@ export default function Hero() {
         {/* Title */}
         <div className="overflow-hidden">
           <motion.h1
-            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight text-gray-900 dark:text-white"
+            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight text-gray-900"
           >
             <motion.span
               initial={{ y: 100, opacity: 0 }}
@@ -190,7 +190,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-8 text-lg sm:text-xl text-gray-500 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed"
+          className="mt-8 text-lg sm:text-xl text-gray-500 max-w-2xl mx-auto leading-relaxed"
         >
           Enable agents to pay for goods, services, and resources — compliant, auditable, and human-controlled.
         </motion.p>
@@ -206,7 +206,7 @@ export default function Hero() {
             as="a"
             href="#cta"
             magneticStrength={0.25}
-            className="inline-flex items-center gap-2 px-8 py-4 bg-gray-900 dark:bg-white text-white dark:text-gray-900 font-medium rounded-full text-lg shadow-xl shadow-gray-900/20 dark:shadow-white/10 hover:shadow-2xl transition-shadow relative overflow-hidden group cursor-pointer"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-gray-900 text-white font-medium rounded-full text-lg shadow-xl shadow-gray-900/20 hover:shadow-2xl transition-shadow relative overflow-hidden group cursor-pointer"
           >
             <span className="relative z-10">Partner with Us</span>
             <motion.span

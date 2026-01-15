@@ -50,7 +50,7 @@ const VisionCard = ({ card, index }) => {
         ref={tiltRef}
         style={tiltStyle}
         {...handlers}
-        className="relative glass dark:glass-subtle bg-white/80 dark:bg-zinc-800/80 border border-gray-100/50 dark:border-zinc-700/50 rounded-2xl p-8 shadow-sm hover:shadow-xl transition-shadow duration-500 preserve-3d"
+        className="relative glass bg-white/80 border border-gray-100/50 rounded-2xl p-8 shadow-sm hover:shadow-xl transition-shadow duration-500 preserve-3d"
       >
         {/* Icon - elevated for 3D effect */}
         <motion.div
@@ -64,10 +64,10 @@ const VisionCard = ({ card, index }) => {
 
         {/* Content - elevated for 3D effect */}
         <div style={{ transform: 'translateZ(20px)' }}>
-          <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
+          <h3 className="text-xl font-semibold text-gray-900 mb-3">
             {card.title}
           </h3>
-          <p className="text-gray-500 dark:text-gray-400 leading-relaxed">
+          <p className="text-gray-500 leading-relaxed">
             {card.description}
           </p>
         </div>
@@ -89,7 +89,7 @@ export default function Vision() {
   const isIntroInView = useInView(introRef, { once: true, margin: '-100px' });
 
   return (
-    <section className="py-32 px-6 bg-[#fafafa] dark:bg-zinc-950">
+    <section className="py-32 px-6 bg-[#fafafa]">
       <div className="max-w-6xl mx-auto">
         {/* Intro Text */}
         <motion.div
@@ -103,7 +103,7 @@ export default function Vision() {
             initial={{ opacity: 0, y: 30 }}
             animate={isIntroInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="text-xl sm:text-2xl text-gray-500 dark:text-gray-400 leading-relaxed mb-8"
+            className="text-xl sm:text-2xl text-gray-500 leading-relaxed mb-8"
           >
             Agents are graduating from simple tasks to complex workflows — browsing, negotiating, transacting. But when it's time to pay, they hit a wall.
           </motion.p>
@@ -112,7 +112,7 @@ export default function Vision() {
             initial={{ opacity: 0, y: 30 }}
             animate={isIntroInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900 dark:text-white leading-tight"
+            className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900 leading-tight"
           >
             Semantic is the missing layer between{' '}
             <span className="gradient-text">agent intent</span> and{' '}

@@ -82,15 +82,15 @@ const FeatureCard = ({ feature, index }) => (
     <motion.div
       whileHover={{ scale: 1.1, rotate: 5 }}
       transition={{ type: 'spring', stiffness: 400, damping: 17 }}
-      className="flex-shrink-0 w-14 h-14 rounded-2xl bg-gradient-to-br from-sky-50 to-blue-50 dark:from-sky-900/30 dark:to-blue-900/30 border border-sky-100/50 dark:border-sky-800/50 flex items-center justify-center group-hover:from-sky-100 group-hover:to-blue-100 dark:group-hover:from-sky-800/40 dark:group-hover:to-blue-800/40 transition-colors duration-300"
+      className="flex-shrink-0 w-14 h-14 rounded-2xl bg-gradient-to-br from-sky-50 to-blue-50 border border-sky-100/50 flex items-center justify-center group-hover:from-sky-100 group-hover:to-blue-100 transition-colors duration-300"
     >
-      <feature.icon className="w-6 h-6 text-sky-600 dark:text-sky-400" strokeWidth={1.5} />
+      <feature.icon className="w-6 h-6 text-sky-600" strokeWidth={1.5} />
     </motion.div>
     <div className="pt-1">
-      <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors">
+      <h4 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-sky-600 transition-colors">
         {feature.title}
       </h4>
-      <p className="text-gray-500 dark:text-gray-400 leading-relaxed">
+      <p className="text-gray-500 leading-relaxed">
         {feature.description}
       </p>
     </div>
@@ -101,7 +101,7 @@ const TabButton = ({ tab, isActive, onClick, layoutId }) => (
   <motion.button
     onClick={onClick}
     className={`relative px-6 py-3 text-sm font-medium rounded-full transition-colors duration-300 ${
-      isActive ? 'text-white' : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
+      isActive ? 'text-white' : 'text-gray-600 hover:text-gray-900'
     }`}
     whileHover={{ scale: isActive ? 1 : 1.05 }}
     whileTap={{ scale: 0.95 }}
@@ -109,11 +109,11 @@ const TabButton = ({ tab, isActive, onClick, layoutId }) => (
     {isActive && (
       <motion.div
         layoutId={layoutId}
-        className="absolute inset-0 bg-gray-900 dark:bg-white rounded-full"
+        className="absolute inset-0 bg-gray-900 rounded-full"
         transition={{ type: 'spring', stiffness: 500, damping: 35 }}
       />
     )}
-    <span className={`relative z-10 flex items-center gap-2 ${isActive ? 'text-white dark:text-gray-900' : ''}`}>
+    <span className={`relative z-10 flex items-center gap-2 ${isActive ? 'text-white' : ''}`}>
       <tab.icon className="w-4 h-4" />
       {tab.label}
     </span>
@@ -128,7 +128,7 @@ export default function Features() {
   const content = tabContent[activeTab];
 
   return (
-    <section ref={ref} className="py-32 px-6 bg-white dark:bg-zinc-900">
+    <section ref={ref} className="py-32 px-6 bg-white">
       <div className="max-w-5xl mx-auto">
         {/* Section Header */}
         <motion.div
@@ -137,7 +137,7 @@ export default function Features() {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+          <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
             What Semantic Does for You
           </h2>
         </motion.div>
@@ -147,7 +147,7 @@ export default function Features() {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="flex flex-wrap justify-center gap-2 mb-12 p-2 bg-gray-50 dark:bg-zinc-800 rounded-full w-fit mx-auto"
+          className="flex flex-wrap justify-center gap-2 mb-12 p-2 bg-gray-50 rounded-full w-fit mx-auto"
         >
           {tabs.map((tab) => (
             <TabButton
@@ -167,7 +167,7 @@ export default function Features() {
           transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
           className="relative"
         >
-          <div className="bg-gradient-to-br from-gray-50 to-white dark:from-zinc-800 dark:to-zinc-900 border border-gray-100 dark:border-zinc-700 rounded-3xl p-8 sm:p-12 shadow-sm">
+          <div className="bg-gradient-to-br from-gray-50 to-white border border-gray-100 rounded-3xl p-8 sm:p-12 shadow-sm">
             {/* Fixed height container to prevent layout shift */}
             <div className="min-h-[420px] sm:min-h-[380px]">
               <AnimatePresence mode="wait">
@@ -183,7 +183,7 @@ export default function Features() {
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.1 }}
-                    className="text-2xl sm:text-3xl font-semibold text-gray-900 dark:text-white mb-10 text-center"
+                    className="text-2xl sm:text-3xl font-semibold text-gray-900 mb-10 text-center"
                   >
                     {content.headline}
                   </motion.h3>
@@ -200,8 +200,8 @@ export default function Features() {
           </div>
 
           {/* Decorative elements */}
-          <div className="absolute -z-10 -top-4 -left-4 w-24 h-24 bg-sky-100/50 dark:bg-sky-500/10 rounded-full blur-2xl" />
-          <div className="absolute -z-10 -bottom-4 -right-4 w-32 h-32 bg-blue-100/50 dark:bg-blue-500/10 rounded-full blur-2xl" />
+          <div className="absolute -z-10 -top-4 -left-4 w-24 h-24 bg-sky-100/50 rounded-full blur-2xl" />
+          <div className="absolute -z-10 -bottom-4 -right-4 w-32 h-32 bg-blue-100/50 rounded-full blur-2xl" />
         </motion.div>
       </div>
     </section>
