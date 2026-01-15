@@ -3,13 +3,15 @@ import { useEffect, useState } from 'react';
 import MagneticButton from './MagneticButton';
 
 const companyLogos = [
-  { name: 'XBTO', logo: 'https://images.seeklogo.com/logo-png/52/1/xbto-logo-png_seeklogo-527029.png' },
-  { name: 'Tether', logo: 'https://images.seeklogo.com/logo-png/40/2/tether-usdt-logo-png_seeklogo-405426.png' },
-  { name: 'Goldman Sachs', logo: 'https://images.seeklogo.com/logo-png/52/2/goldman-sachs-new-2022-logo-png_seeklogo-527445.png' },
-  { name: 'Antler', logo: 'https://images.seeklogo.com/logo-png/52/1/antler-logo-png_seeklogo-526998.png' },
-  { name: 'Khalifa University', logo: 'https://images.seeklogo.com/logo-png/33/1/khalifa-university-logo-png_seeklogo-334915.png' },
+  { name: 'XBTO', logo: 'https://images.seeklogo.com/logo-png/43/1/xbto-logo-png_seeklogo-432078.png' },
+  { name: 'Tether', logo: 'https://cryptologos.cc/logos/tether-usdt-logo.png' },
+  { name: 'Goldman Sachs', logo: 'https://images.seeklogo.com/logo-png/6/1/goldman-sachs-logo-png_seeklogo-61965.png' },
+  { name: 'Antler', logo: 'https://cdn.prod.website-files.com/68c1084e137e63873a526f0f/690047f528e289c32777fb9c_antler-logo-mark.png' },
+  { name: 'Khalifa University', logo: 'https://crystalpng.com/wp-content/uploads/2025/11/Khalifa-University-Logo.png' },
   { name: 'Huawei', logo: 'https://images.seeklogo.com/logo-png/6/2/huawei-logo-png_seeklogo-68529.png' },
-  { name: 'Nokia Bell Labs', logo: 'https://images.seeklogo.com/logo-png/52/2/nokia-bell-labs-logo-png_seeklogo-526694.png' },
+  { name: 'Nokia Bell Labs', logo: 'https://media.licdn.com/dms/image/v2/D4E0BAQGKolmYRTf1uQ/company-logo_200_200/company-logo_200_200/0/1738848703564/nokiabelllabs_logo?e=2147483647&v=beta&t=llk9AEjdCbZMXgb_RoOLYJZz2MONrkjUz1qXlG0CgLM' },
+  { name: 'HSBC', logo: 'https://www.pngarts.com/files/1/HSBC-Logo-Transparent-Image.png' },
+  { name: 'Google', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/500px-Google_%22G%22_logo.svg.png' },
 ];
 
 const FloatingOrb = ({ className, delay = 0, parallaxY }) => (
@@ -33,14 +35,14 @@ const LogoImage = ({ src, alt }) => {
   if (error) return null;
 
   return (
-    <div className="relative h-6 w-20 flex items-center justify-center">
+    <div className="relative h-full flex items-center justify-center">
       {!loaded && <ImageSkeleton />}
       <img
         src={src}
         alt={alt}
         onLoad={() => setLoaded(true)}
         onError={() => setError(true)}
-        className={`h-6 w-auto max-w-[100px] object-contain absolute transition-opacity duration-500 ${loaded ? 'opacity-100' : 'opacity-0'}`}
+        className={`max-h-full max-w-full object-contain transition-opacity duration-500 ${loaded ? 'opacity-100' : 'opacity-0'}`}
         loading="lazy"
       />
     </div>
@@ -48,7 +50,7 @@ const LogoImage = ({ src, alt }) => {
 };
 
 const LogoCarousel = () => {
-  const duplicatedLogos = [...companyLogos, ...companyLogos];
+  const triplicatedLogos = [...companyLogos, ...companyLogos, ...companyLogos];
 
   return (
     <div className="relative mt-16 overflow-hidden">
@@ -72,10 +74,10 @@ const LogoCarousel = () => {
         <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-[#fafafa] to-transparent z-10" />
 
         <div className="flex animate-scroll-logos">
-          {duplicatedLogos.map((company, index) => (
+          {triplicatedLogos.map((company, index) => (
             <div
               key={`${company.name}-${index}`}
-              className="flex-shrink-0 mx-8 h-8 flex items-center justify-center grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-500"
+              className="flex-shrink-0 mx-8 h-16 flex items-center justify-center grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-500"
             >
               <LogoImage src={company.logo} alt={company.name} />
             </div>

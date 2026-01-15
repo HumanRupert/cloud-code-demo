@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react';
 import { motion, AnimatePresence, useInView } from 'framer-motion';
-import { ShoppingCart, CreditCard, Code, Store, Globe, Shield, Wallet, Coins, Layers } from 'lucide-react';
+import { ShoppingCart, CreditCard, Code, Store, Globe, Shield, Wallet, Coins, Layers, FastForward } from 'lucide-react';
 
 const tabs = [
   { id: 'ecommerce', label: 'Ecommerce Platforms', icon: Store },
@@ -43,9 +43,9 @@ const tabContent = {
         description: 'Google AP2, OpenAI ACP, Mastercard AgentPay, Visa TAP, Intelligent Commerce. Connect once, support every agent payment standard as they emerge.',
       },
       {
-        icon: Globe,
-        title: 'Global coverage',
-        description: 'Access 180+ countries and 50+ payment methods through a single integration.',
+        icon: FastForward,
+        title: 'Fast GTM',
+        description: 'Add agent checkout to your merchant offering in days, not quarters.',
       },
     ],
   },

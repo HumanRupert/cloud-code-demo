@@ -6,27 +6,27 @@ import { AnimatedCounter } from '../hooks/useCountUp';
 const agents = [
   {
     name: 'LangChain',
-    logo: 'https://images.seeklogo.com/logo-png/52/1/langchain-logo-png_seeklogo-527539.png'
+    logo: 'https://images.seeklogo.com/logo-png/61/1/langchain-icon-logo-png_seeklogo-611655.png'
   },
   {
     name: 'Google ADK',
-    logo: 'https://images.seeklogo.com/logo-png/35/1/google-g-2015-logo-png_seeklogo-352655.png'
+    logo: 'https://google.github.io/adk-docs/assets/agent-development-kit.png'
   },
   {
     name: 'Gemini',
-    logo: 'https://images.seeklogo.com/logo-png/55/1/google-gemini-logo-png_seeklogo-556522.png'
+    logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Google_Gemini_icon_2025.svg/960px-Google_Gemini_icon_2025.svg.png'
   },
   {
     name: 'Claude',
-    logo: 'https://images.seeklogo.com/logo-png/61/1/claude-ai-logo-png_seeklogo-614101.png'
+    logo: 'https://upload.wikimedia.org/wikipedia/commons/b/b0/Claude_AI_symbol.svg'
   },
   {
     name: 'ChatGPT',
-    logo: 'https://images.seeklogo.com/logo-png/52/2/chatgpt-logo-png_seeklogo-527249.png'
+    logo: 'https://static.vecteezy.com/system/resources/previews/021/059/827/non_2x/chatgpt-logo-chat-gpt-icon-on-white-background-free-vector.jpg'
   },
   {
     name: 'OpenAI SDK',
-    logo: 'https://images.seeklogo.com/logo-png/52/1/openai-logo-png_seeklogo-527024.png'
+    logo: 'https://us1.discourse-cdn.com/openai1/original/4X/3/2/1/321a1ba297482d3d4060d114860de1aa5610f8a9.png'
   },
 ];
 
@@ -35,45 +35,45 @@ const paymentGroups = [
   {
     category: 'PSPs',
     items: [
-      { name: 'Stripe', logo: 'https://images.seeklogo.com/logo-png/52/1/stripe-logo-png_seeklogo-527130.png' },
-      { name: 'Adyen', logo: 'https://images.seeklogo.com/logo-png/52/2/adyen-logo-png_seeklogo-527283.png' },
+      { name: 'Stripe', logo: 'https://images.seeklogo.com/logo-png/29/1/stripe-logo-png_seeklogo-290635.png' },
+      { name: 'Adyen', logo: 'https://images.seeklogo.com/logo-png/31/1/adyen-logo-png_seeklogo-316102.png' },
     ],
   },
   {
     category: 'Card Networks',
     items: [
-      { name: 'Visa', logo: 'https://images.seeklogo.com/logo-png/52/1/visa-logo-png_seeklogo-527085.png' },
-      { name: 'Mastercard', logo: 'https://images.seeklogo.com/logo-png/48/1/mastercard-logo-png_seeklogo-489106.png' },
+      { name: 'Visa Intelligent Commerce', logo: 'https://images.seeklogo.com/logo-png/14/1/visa-logo-png_seeklogo-149697.png' },
+      { name: 'Mastercard Agent Pay', logo: 'https://download.logo.wine/logo/Mastercard/Mastercard-Logo.wine.png' },
     ],
   },
   {
     category: 'BNPL',
     items: [
-      { name: 'Tamara', logo: 'https://images.seeklogo.com/logo-png/52/1/tamara-logo-png_seeklogo-521906.png' },
-      { name: 'Tabby', logo: 'https://images.seeklogo.com/logo-png/50/1/tabby-logo-png_seeklogo-500498.png' },
+      { name: 'Tamara', logo: 'https://media.licdn.com/dms/image/v2/D4D0BAQEJB3vk5iGuFg/company-logo_200_200/B4DZkAT60sIEAI-/0/1756646846578/tamara_logo?e=2147483647&v=beta&t=jQTR3kO66w_lWVaUTIYVwwNkzYh0EwwEqep1tuR2Wuw' },
+      { name: 'Tabby', logo: 'https://s3-eu-west-1.amazonaws.com/tpd/logos/60110918897a86000191df7e/0x0.png' },
     ],
   },
   {
     category: 'Ecommerce',
     items: [
-      { name: 'Shopify', logo: 'https://images.seeklogo.com/logo-png/52/1/shopify-logo-png_seeklogo-526853.png' },
-      { name: 'Salla', logo: 'https://images.seeklogo.com/logo-png/52/1/salla-logo-png_seeklogo-522966.png' },
-      { name: 'Zid', logo: 'https://images.seeklogo.com/logo-png/52/1/zid-logo-png_seeklogo-525084.png' },
+      { name: 'Shopify', logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ58f__Hs5QwGWIEcsawDwW1o5IQzaYNPONhQ&s' },
+      { name: 'Salla', logo: 'https://avatars.githubusercontent.com/u/44970666?v=4' },
+      { name: 'Zid', logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfyu1kOIQSHXhwHfO6KHThtedYmSuBKWCgvw&s' },
     ],
   },
   {
     category: 'Digital Assets',
     items: [
-      { name: 'USDT', logo: 'https://images.seeklogo.com/logo-png/40/2/tether-usdt-logo-png_seeklogo-405426.png' },
-      { name: 'BTC', logo: 'https://images.seeklogo.com/logo-png/33/1/bitcoin-logo-png_seeklogo-336091.png' },
-      { name: 'ETH', logo: 'https://images.seeklogo.com/logo-png/38/1/ethereum-eth-logo-png_seeklogo-387956.png' },
+      { name: 'USDT', logo: 'https://cryptologos.cc/logos/tether-usdt-logo.png' },
+      { name: 'BTC', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Bitcoin.svg/1280px-Bitcoin.svg.png' },
+      { name: 'ETH', logo: 'https://images.seeklogo.com/logo-png/40/1/ethereum-logo-png_seeklogo-407463.png' },
     ],
   },
   {
     category: 'Instant Payments',
     items: [
-      { name: 'Aani', logo: 'https://images.seeklogo.com/logo-png/61/1/aani-logo-png_seeklogo-614848.png' },
-      { name: 'Pix', logo: 'https://images.seeklogo.com/logo-png/46/1/pix-logo-png_seeklogo-469741.png' },
+      { name: 'Aani', logo: 'https://aep.ae/media/e5udt2yc/asset-2-1.svg' },
+      { name: 'Pix', logo: 'https://img.icons8.com/color/1200/pix.jpg' },
     ],
   },
 ];
@@ -136,13 +136,13 @@ const LogoBox = ({ item }) => {
       {/* Square logo box */}
       <motion.div
         whileHover={{ scale: 1.1 }}
-        className="w-10 h-10 flex items-center justify-center bg-white rounded-lg border border-gray-100 shadow-sm hover:shadow-md hover:border-sky-200 transition-all cursor-default"
+        className="w-12 h-12 flex items-center justify-center bg-white rounded-lg border border-gray-100 shadow-sm hover:shadow-md hover:border-sky-200 transition-all cursor-default"
       >
         {!imgError ? (
           <img
             src={item.logo}
             alt={item.name}
-            className="w-6 h-6 object-contain"
+            className="w-8 h-8 object-contain"
             onError={() => setImgError(true)}
           />
         ) : (
@@ -174,7 +174,7 @@ const PaymentGroup = ({ group, index }) => (
 );
 
 const CentralHub = () => {
-  const features = ['Policy Enforcement', 'Authorization', 'Accountability'];
+  const features = ['Policy Enforcement', 'Authorization', 'Visibility'];
 
   return (
     <motion.div
@@ -278,7 +278,7 @@ export default function Architecture() {
             How It Works
           </h2>
           <p className="text-gray-500 text-lg max-w-2xl mx-auto">
-            One integration connects AI agents to global payment infrastructure
+            One integration connects AI agents to on-chain and off-chain payment infrastructure
           </p>
         </motion.div>
 
@@ -427,32 +427,6 @@ export default function Architecture() {
           </div>
         </motion.div>
 
-        {/* Bottom stats with animated counters */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto"
-        >
-          {[
-            { value: '50+', label: 'Payment Methods', delay: 0 },
-            { value: '180+', label: 'Countries', delay: 0.1 },
-            { value: '<100ms', label: 'Latency', delay: 0.2 },
-            { value: '99.99%', label: 'Uptime', delay: 0.3 },
-          ].map((stat) => (
-            <AnimatedCounter
-              key={stat.label}
-              value={stat.value}
-              label={stat.label}
-              delay={stat.delay}
-              duration={2000}
-              className="text-center"
-              valueClassName="text-2xl sm:text-3xl font-bold text-gray-900"
-              labelClassName="text-sm text-gray-500 mt-1"
-            />
-          ))}
-        </motion.div>
       </div>
     </section>
   );

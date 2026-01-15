@@ -178,12 +178,14 @@ body {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-50%);
+    transform: translateX(-33.333%);
   }
 }
 
 .animate-scroll-logos {
-  animation: scroll-logos 25s linear infinite;
+  display: flex;
+  width: max-content;
+  animation: scroll-logos 20s linear infinite;
 }
 
 .animate-scroll-logos:hover {

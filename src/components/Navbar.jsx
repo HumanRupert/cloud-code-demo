@@ -1,13 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
-const Logo = () => (
-  <svg className="w-8 h-8" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M16 2L4 9V23L16 30L28 23V9L16 2Z" stroke="currentColor" strokeWidth="2" fill="none"/>
-    <path d="M16 10L10 13.5V20.5L16 24L22 20.5V13.5L16 10Z" fill="currentColor"/>
-  </svg>
-);
-
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
 
@@ -32,12 +25,13 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         <a href="#" className="flex items-center gap-2 text-gray-900 font-semibold text-lg group">
-          <motion.div
+          <motion.img
+            src="/logo.png"
+            alt="Semantic"
+            className="w-12 h-12 object-contain"
             whileHover={{ rotate: 180 }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <Logo />
-          </motion.div>
+          />
           <span>Semantic</span>
         </a>
 
