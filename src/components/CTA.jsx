@@ -9,7 +9,7 @@ export default function CTA() {
   return (
     <section ref={ref} id="cta" className="py-32 px-6 relative overflow-hidden">
       {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-indigo-50 via-purple-50/50 to-pink-50/30" />
+      <div className="absolute inset-0 bg-gradient-to-br from-sky-50 via-blue-50/50 to-cyan-50/30" />
 
       {/* Animated background shapes */}
       <motion.div
@@ -24,7 +24,7 @@ export default function CTA() {
             y: [0, -20, 0],
           }}
           transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-          className="absolute -top-32 -right-32 w-96 h-96 bg-gradient-to-br from-indigo-200/40 to-purple-200/30 rounded-full blur-3xl"
+          className="absolute -top-32 -right-32 w-96 h-96 bg-gradient-to-br from-sky-200/40 to-blue-200/30 rounded-full blur-3xl"
         />
         <motion.div
           animate={{
@@ -32,7 +32,7 @@ export default function CTA() {
             y: [0, 30, 0],
           }}
           transition={{ duration: 25, repeat: Infinity, ease: 'linear' }}
-          className="absolute -bottom-32 -left-32 w-96 h-96 bg-gradient-to-br from-purple-200/30 to-pink-200/20 rounded-full blur-3xl"
+          className="absolute -bottom-32 -left-32 w-96 h-96 bg-gradient-to-br from-blue-200/30 to-cyan-200/20 rounded-full blur-3xl"
         />
       </motion.div>
 
@@ -53,7 +53,7 @@ export default function CTA() {
         >
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-6">
             Ready for{' '}
-            <span className="gradient-text">agentic commerce</span>?
+            <span className="gradient-text">Agentic Commerce</span>?
           </h2>
         </motion.div>
 
@@ -75,20 +75,20 @@ export default function CTA() {
             href="mailto:partners@semantic.dev"
             whileHover={{
               scale: 1.05,
-              boxShadow: '0 25px 50px -12px rgba(99, 102, 241, 0.35)',
+              boxShadow: '0 25px 50px -12px rgba(14, 165, 233, 0.35)',
             }}
             whileTap={{ scale: 0.95 }}
             className="group inline-flex items-center gap-3 px-10 py-5 bg-gray-900 text-white font-medium rounded-full text-lg shadow-xl shadow-gray-900/20 relative overflow-hidden"
           >
             {/* Gradient overlay on hover */}
             <motion.div
-              className="absolute inset-0 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600"
+              className="absolute inset-0 bg-gradient-to-r from-sky-500 via-blue-500 to-sky-600"
               initial={{ opacity: 0 }}
               whileHover={{ opacity: 1 }}
               transition={{ duration: 0.3 }}
             />
 
-            <span className="relative z-10">Partner with us</span>
+            <span className="relative z-10">Partner with Us</span>
             <motion.span
               className="relative z-10"
               initial={{ x: 0 }}

@@ -7,19 +7,19 @@ const cards = [
     icon: Shield,
     title: 'Human oversight & guardrails',
     description: 'Policy controls, approval workflows, and spending limits — humans remain the final authority.',
-    gradient: 'from-blue-500 to-indigo-500',
+    gradient: 'from-sky-400 to-blue-500',
   },
   {
     icon: Lock,
     title: 'Accountability & authorization',
     description: 'Every agent linked to a verified human via World ID. Signed credentials. Dispute resolution built in.',
-    gradient: 'from-indigo-500 to-purple-500',
+    gradient: 'from-blue-500 to-blue-600',
   },
   {
     icon: Zap,
     title: 'Universal integration',
     description: 'Card networks, local RTPs, OpenAI ACP, Google AP2, stablecoins — one integration.',
-    gradient: 'from-purple-500 to-pink-500',
+    gradient: 'from-blue-600 to-sky-500',
   },
 ];
 

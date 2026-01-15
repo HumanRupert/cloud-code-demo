@@ -91,15 +91,15 @@ export default function Hero() {
           className="absolute inset-0"
         >
           <FloatingOrb
-            className="w-[600px] h-[600px] -top-48 -right-48 bg-gradient-to-br from-indigo-200/40 to-purple-200/30"
+            className="w-[600px] h-[600px] -top-48 -right-48 bg-gradient-to-br from-sky-200/40 to-blue-200/30"
             delay={0}
           />
           <FloatingOrb
-            className="w-[400px] h-[400px] top-1/3 -left-32 bg-gradient-to-br from-purple-200/30 to-pink-200/20"
+            className="w-[400px] h-[400px] top-1/3 -left-32 bg-gradient-to-br from-blue-200/30 to-cyan-200/20"
             delay={0.2}
           />
           <FloatingOrb
-            className="w-[300px] h-[300px] bottom-32 right-1/4 bg-gradient-to-br from-blue-200/25 to-indigo-200/20"
+            className="w-[300px] h-[300px] bottom-32 right-1/4 bg-gradient-to-br from-cyan-200/25 to-sky-200/20"
             delay={0.4}
           />
         </motion.div>
@@ -127,7 +127,7 @@ export default function Hero() {
               transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
               className="block"
             >
-              The agentic
+              The Agentic
             </motion.span>
             <motion.span
               initial={{ y: 100, opacity: 0 }}
@@ -135,7 +135,7 @@ export default function Hero() {
               transition={{ duration: 1, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
               className="block gradient-text"
             >
-              payment stack
+              Payment Stack
             </motion.span>
           </motion.h1>
         </div>
@@ -159,7 +159,7 @@ export default function Hero() {
         >
           <motion.a
             href="#cta"
-            whileHover={{ scale: 1.05, boxShadow: '0 20px 40px rgba(99, 102, 241, 0.3)' }}
+            whileHover={{ scale: 1.05, boxShadow: '0 20px 40px rgba(14, 165, 233, 0.3)' }}
             whileTap={{ scale: 0.95 }}
             className="inline-flex items-center gap-2 px-8 py-4 bg-gray-900 text-white font-medium rounded-full text-lg shadow-xl shadow-gray-900/20 hover:bg-gray-800 transition-colors relative overflow-hidden group"
           >
@@ -171,33 +171,13 @@ export default function Hero() {
             >
               →
             </motion.span>
-            <div className="absolute inset-0 bg-gradient-to-r from-indigo-600 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="absolute inset-0 bg-gradient-to-r from-sky-500 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
           </motion.a>
         </motion.div>
 
         {/* Logo Carousel */}
         <LogoCarousel />
       </div>
-
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2, duration: 1 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-      >
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-          className="w-6 h-10 rounded-full border-2 border-gray-300 flex items-start justify-center p-2"
-        >
-          <motion.div
-            animate={{ y: [0, 12, 0], opacity: [1, 0, 1] }}
-            transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-            className="w-1 h-2 bg-gray-400 rounded-full"
-          />
-        </motion.div>
-      </motion.div>
     </section>
   );
 }

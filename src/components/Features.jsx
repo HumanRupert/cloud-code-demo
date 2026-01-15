@@ -42,6 +42,11 @@ const tabContent = {
         title: 'Universal protocol support',
         description: 'Google AP2, OpenAI ACP, Mastercard AgentPay, Visa TAP, Intelligent Commerce. Connect once, support every agent payment standard as they emerge.',
       },
+      {
+        icon: Globe,
+        title: 'Global coverage',
+        description: 'Access 180+ countries and 50+ payment methods through a single integration.',
+      },
     ],
   },
   developers: {
@@ -77,12 +82,12 @@ const FeatureCard = ({ feature, index }) => (
     <motion.div
       whileHover={{ scale: 1.1, rotate: 5 }}
       transition={{ type: 'spring', stiffness: 400, damping: 17 }}
-      className="flex-shrink-0 w-14 h-14 rounded-2xl bg-gradient-to-br from-indigo-50 to-purple-50 border border-indigo-100/50 flex items-center justify-center group-hover:from-indigo-100 group-hover:to-purple-100 transition-colors duration-300"
+      className="flex-shrink-0 w-14 h-14 rounded-2xl bg-gradient-to-br from-sky-50 to-blue-50 border border-sky-100/50 flex items-center justify-center group-hover:from-sky-100 group-hover:to-blue-100 transition-colors duration-300"
     >
-      <feature.icon className="w-6 h-6 text-indigo-600" strokeWidth={1.5} />
+      <feature.icon className="w-6 h-6 text-sky-600" strokeWidth={1.5} />
     </motion.div>
     <div className="pt-1">
-      <h4 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-indigo-600 transition-colors">
+      <h4 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-sky-600 transition-colors">
         {feature.title}
       </h4>
       <p className="text-gray-500 leading-relaxed">
@@ -133,7 +138,7 @@ export default function Features() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
-            What Semantic does for you
+            What Semantic Does for You
           </h2>
         </motion.div>
 
@@ -163,37 +168,40 @@ export default function Features() {
           className="relative"
         >
           <div className="bg-gradient-to-br from-gray-50 to-white border border-gray-100 rounded-3xl p-8 sm:p-12 shadow-sm">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeTab}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-              >
-                {/* Headline */}
-                <motion.h3
-                  initial={{ opacity: 0, y: 10 }}
+            {/* Fixed height container to prevent layout shift */}
+            <div className="min-h-[420px] sm:min-h-[380px]">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeTab}
+                  initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.1 }}
-                  className="text-2xl sm:text-3xl font-semibold text-gray-900 mb-10 text-center"
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                 >
-                  {content.headline}
-                </motion.h3>
+                  {/* Headline */}
+                  <motion.h3
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.1 }}
+                    className="text-2xl sm:text-3xl font-semibold text-gray-900 mb-10 text-center"
+                  >
+                    {content.headline}
+                  </motion.h3>
 
-                {/* Features */}
-                <div className="space-y-8">
-                  {content.features.map((feature, index) => (
-                    <FeatureCard key={feature.title} feature={feature} index={index} />
-                  ))}
-                </div>
-              </motion.div>
-            </AnimatePresence>
+                  {/* Features */}
+                  <div className="space-y-8">
+                    {content.features.map((feature, index) => (
+                      <FeatureCard key={feature.title} feature={feature} index={index} />
+                    ))}
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+            </div>
           </div>
 
           {/* Decorative elements */}
-          <div className="absolute -z-10 -top-4 -left-4 w-24 h-24 bg-indigo-100/50 rounded-full blur-2xl" />
-          <div className="absolute -z-10 -bottom-4 -right-4 w-32 h-32 bg-purple-100/50 rounded-full blur-2xl" />
+          <div className="absolute -z-10 -top-4 -left-4 w-24 h-24 bg-sky-100/50 rounded-full blur-2xl" />
+          <div className="absolute -z-10 -bottom-4 -right-4 w-32 h-32 bg-blue-100/50 rounded-full blur-2xl" />
         </motion.div>
       </div>
     </section>
