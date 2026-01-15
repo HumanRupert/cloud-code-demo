@@ -1,5 +1,6 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
+import { AnimatedCounter } from '../hooks/useCountUp';
 
 // Agent data with colors
 const agents = [
@@ -69,7 +70,7 @@ const NodeItem = ({ item, index, side }) => {
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay: 0.1 * index, ease: [0.16, 1, 0.3, 1] }}
       whileHover={{ scale: 1.05, x: isLeft ? -5 : 5 }}
-      className={`flex items-center gap-3 px-4 py-2.5 bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-md hover:border-sky-200 transition-all cursor-default ${
+      className={`flex items-center gap-3 px-4 py-2.5 bg-white dark:bg-zinc-800 rounded-xl border border-gray-100 dark:border-zinc-700 shadow-sm hover:shadow-md hover:border-sky-200 dark:hover:border-sky-600 transition-all cursor-default ${
         isLeft ? 'flex-row' : 'flex-row-reverse'
       }`}
     >
@@ -77,7 +78,7 @@ const NodeItem = ({ item, index, side }) => {
         className="w-3 h-3 rounded-full flex-shrink-0"
         style={{ backgroundColor: item.color }}
       />
-      <span className="text-sm font-medium text-gray-700 whitespace-nowrap">
+      <span className="text-sm font-medium text-gray-700 dark:text-gray-200 whitespace-nowrap">
         {item.name}
       </span>
     </motion.div>
@@ -90,9 +91,9 @@ const RailGroup = ({ group, index }) => (
     whileInView={{ opacity: 1, x: 0 }}
     viewport={{ once: true }}
     transition={{ duration: 0.6, delay: 0.1 * index, ease: [0.16, 1, 0.3, 1] }}
-    className="bg-white rounded-xl border border-gray-100 p-3 shadow-sm hover:shadow-md hover:border-sky-200 transition-all"
+    className="bg-white dark:bg-zinc-800 rounded-xl border border-gray-100 dark:border-zinc-700 p-3 shadow-sm hover:shadow-md hover:border-sky-200 dark:hover:border-sky-600 transition-all"
   >
-    <span className="text-[10px] font-semibold text-gray-400 uppercase tracking-wider">
+    <span className="text-[10px] font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wider">
       {group.category}
     </span>
     <div className="flex flex-wrap gap-1.5 mt-2">
@@ -100,13 +101,13 @@ const RailGroup = ({ group, index }) => (
         <motion.div
           key={item.name}
           whileHover={{ scale: 1.1 }}
-          className="flex items-center gap-1.5 px-2 py-1 bg-gray-50 rounded-md cursor-default"
+          className="flex items-center gap-1.5 px-2 py-1 bg-gray-50 dark:bg-zinc-700 rounded-md cursor-default"
         >
           <div
             className="w-2 h-2 rounded-full flex-shrink-0"
             style={{ backgroundColor: item.color }}
           />
-          <span className="text-xs font-medium text-gray-600">{item.name}</span>
+          <span className="text-xs font-medium text-gray-600 dark:text-gray-300">{item.name}</span>
         </motion.div>
       ))}
     </div>
@@ -182,7 +183,7 @@ export default function Architecture() {
   const totalRails = paymentRailGroups.length;
 
   return (
-    <section ref={ref} className="py-32 px-6 bg-gradient-to-b from-[#fafafa] to-gray-50 overflow-hidden">
+    <section ref={ref} className="py-32 px-6 bg-gradient-to-b from-[#fafafa] to-gray-50 dark:from-zinc-900 dark:to-zinc-950 overflow-hidden">
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <motion.div
@@ -191,10 +192,10 @@ export default function Architecture() {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="text-center mb-20"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
+          <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4">
             How It Works
           </h2>
-          <p className="text-gray-500 text-lg max-w-2xl mx-auto">
+          <p className="text-gray-500 dark:text-gray-400 text-lg max-w-2xl mx-auto">
             One integration connects AI agents to global payment infrastructure
           </p>
         </motion.div>
@@ -207,7 +208,7 @@ export default function Architecture() {
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-2 text-center"
+              className="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-widest mb-2 text-center"
             >
               AI Agents
             </motion.span>
@@ -324,7 +325,7 @@ export default function Architecture() {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.5 }}
-              className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-2 text-center"
+              className="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-widest mb-2 text-center"
             >
               Payment Rails
             </motion.span>
@@ -340,7 +341,7 @@ export default function Architecture() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.5 }}
-          className="lg:hidden mt-12 flex items-center justify-center gap-4 text-gray-400"
+          className="lg:hidden mt-12 flex items-center justify-center gap-4 text-gray-400 dark:text-gray-500"
         >
           <div className="flex items-center gap-2">
             <div className="w-2 h-2 rounded-full bg-sky-400" />
@@ -352,7 +353,7 @@ export default function Architecture() {
           >
             →
           </motion.span>
-          <span className="text-sm font-semibold text-gray-600">Semantic</span>
+          <span className="text-sm font-semibold text-gray-600 dark:text-gray-300">Semantic</span>
           <motion.span
             animate={{ x: [0, 5, 0] }}
             transition={{ duration: 1.5, repeat: Infinity, delay: 0.3 }}
@@ -365,7 +366,7 @@ export default function Architecture() {
           </div>
         </motion.div>
 
-        {/* Bottom stats */}
+        {/* Bottom stats with animated counters */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -374,22 +375,21 @@ export default function Architecture() {
           className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto"
         >
           {[
-            { value: '50+', label: 'Payment Methods' },
-            { value: '180+', label: 'Countries' },
-            { value: '<100ms', label: 'Latency' },
-            { value: '99.99%', label: 'Uptime' },
-          ].map((stat, i) => (
-            <motion.div
+            { value: '50+', label: 'Payment Methods', delay: 0 },
+            { value: '180+', label: 'Countries', delay: 0.1 },
+            { value: '<100ms', label: 'Latency', delay: 0.2 },
+            { value: '99.99%', label: 'Uptime', delay: 0.3 },
+          ].map((stat) => (
+            <AnimatedCounter
               key={stat.label}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.6 + i * 0.1 }}
+              value={stat.value}
+              label={stat.label}
+              delay={stat.delay}
+              duration={2000}
               className="text-center"
-            >
-              <div className="text-2xl sm:text-3xl font-bold text-gray-900">{stat.value}</div>
-              <div className="text-sm text-gray-500 mt-1">{stat.label}</div>
-            </motion.div>
+              valueClassName="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white"
+              labelClassName="text-sm text-gray-500 dark:text-gray-400 mt-1"
+            />
           ))}
         </motion.div>
       </div>

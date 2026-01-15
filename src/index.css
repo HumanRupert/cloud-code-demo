@@ -13,6 +13,31 @@
   --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
 }
 
+/* CSS Custom Properties for theming */
+:root {
+  --bg-primary: #fafafa;
+  --bg-secondary: #ffffff;
+  --bg-tertiary: #f3f4f6;
+  --text-primary: #111827;
+  --text-secondary: #4b5563;
+  --text-muted: #9ca3af;
+  --border-color: #e5e7eb;
+  --card-bg: #ffffff;
+  --card-border: rgba(0, 0, 0, 0.05);
+}
+
+:root.dark {
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #111111;
+  --bg-tertiary: #1a1a1a;
+  --text-primary: #fafafa;
+  --text-secondary: #a1a1aa;
+  --text-muted: #71717a;
+  --border-color: #27272a;
+  --card-bg: #141414;
+  --card-border: rgba(255, 255, 255, 0.05);
+}
+
 /* Base styles */
 html {
   scroll-behavior: smooth;
@@ -20,9 +45,64 @@ html {
   -moz-osx-font-smoothing: grayscale;
 }
 
+html, body {
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
 body {
   font-family: var(--font-family-sans);
   overflow-x: hidden;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+/* Smooth transitions for theme change */
+*, *::before, *::after {
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Glassmorphism utilities */
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.dark .glass {
+  background: rgba(20, 20, 20, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-subtle {
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.dark .glass-subtle {
+  background: rgba(30, 30, 30, 0.6);
+}
+
+/* 3D Transform preservation */
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+/* Hide custom cursor on touch devices */
+@media (pointer: coarse) {
+  .custom-cursor {
+    display: none !important;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 /* Custom scrollbar */
@@ -34,13 +114,28 @@ body {
   background: #f1f1f1;
 }
 
+.dark ::-webkit-scrollbar-track,
+:root.dark ::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
 ::-webkit-scrollbar-thumb {
   background: #c1c1c1;
   border-radius: 4px;
 }
 
+.dark ::-webkit-scrollbar-thumb,
+:root.dark ::-webkit-scrollbar-thumb {
+  background: #3a3a3a;
+}
+
 ::-webkit-scrollbar-thumb:hover {
   background: #a1a1a1;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover,
+:root.dark ::-webkit-scrollbar-thumb:hover {
+  background: #4a4a4a;
 }
 
 /* Gradient text utility */

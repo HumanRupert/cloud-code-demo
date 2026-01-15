@@ -1,6 +1,7 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { Shield, Lock, Zap } from 'lucide-react';
+import { use3DTilt } from '../hooks/use3DTilt';
 
 const cards = [
   {
@@ -24,38 +25,52 @@ const cards = [
 ];
 
 const VisionCard = ({ card, index }) => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const viewRef = useRef(null);
+  const isInView = useInView(viewRef, { once: true, margin: '-100px' });
+  const { ref: tiltRef, style: tiltStyle, handlers } = use3DTilt({
+    maxTilt: 8,
+    perspective: 1000,
+    scale: 1.02,
+    glare: true,
+    glareMaxOpacity: 0.1,
+  });
 
   return (
     <motion.div
-      ref={ref}
+      ref={viewRef}
       initial={{ opacity: 0, y: 60 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.8, delay: index * 0.15, ease: [0.16, 1, 0.3, 1] }}
-      whileHover={{ y: -8, transition: { duration: 0.3 } }}
       className="group relative"
     >
       {/* Card glow effect */}
       <div className={`absolute -inset-0.5 bg-gradient-to-r ${card.gradient} rounded-2xl opacity-0 group-hover:opacity-20 blur-xl transition-all duration-500`} />
 
-      <div className="relative bg-white border border-gray-100 rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-500">
-        {/* Icon */}
+      <div
+        ref={tiltRef}
+        style={tiltStyle}
+        {...handlers}
+        className="relative glass dark:glass-subtle bg-white/80 dark:bg-zinc-800/80 border border-gray-100/50 dark:border-zinc-700/50 rounded-2xl p-8 shadow-sm hover:shadow-xl transition-shadow duration-500 preserve-3d"
+      >
+        {/* Icon - elevated for 3D effect */}
         <motion.div
           whileHover={{ scale: 1.1, rotate: 5 }}
           transition={{ type: 'spring', stiffness: 400, damping: 10 }}
           className={`w-14 h-14 rounded-xl bg-gradient-to-br ${card.gradient} flex items-center justify-center mb-6 shadow-lg`}
+          style={{ transform: 'translateZ(30px)' }}
         >
           <card.icon className="w-7 h-7 text-white" strokeWidth={1.5} />
         </motion.div>
 
-        {/* Content */}
-        <h3 className="text-xl font-semibold text-gray-900 mb-3">
-          {card.title}
-        </h3>
-        <p className="text-gray-500 leading-relaxed">
-          {card.description}
-        </p>
+        {/* Content - elevated for 3D effect */}
+        <div style={{ transform: 'translateZ(20px)' }}>
+          <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
+            {card.title}
+          </h3>
+          <p className="text-gray-500 dark:text-gray-400 leading-relaxed">
+            {card.description}
+          </p>
+        </div>
 
         {/* Hover line effect */}
         <motion.div
@@ -74,7 +89,7 @@ export default function Vision() {
   const isIntroInView = useInView(introRef, { once: true, margin: '-100px' });
 
   return (
-    <section className="py-32 px-6 bg-[#fafafa]">
+    <section className="py-32 px-6 bg-[#fafafa] dark:bg-zinc-950">
       <div className="max-w-6xl mx-auto">
         {/* Intro Text */}
         <motion.div
@@ -88,7 +103,7 @@ export default function Vision() {
             initial={{ opacity: 0, y: 30 }}
             animate={isIntroInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="text-xl sm:text-2xl text-gray-500 leading-relaxed mb-8"
+            className="text-xl sm:text-2xl text-gray-500 dark:text-gray-400 leading-relaxed mb-8"
           >
             Agents are graduating from simple tasks to complex workflows — browsing, negotiating, transacting. But when it's time to pay, they hit a wall.
           </motion.p>
@@ -97,7 +112,7 @@ export default function Vision() {
             initial={{ opacity: 0, y: 30 }}
             animate={isIntroInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900 leading-tight"
+            className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900 dark:text-white leading-tight"
           >
             Semantic is the missing layer between{' '}
             <span className="gradient-text">agent intent</span> and{' '}
