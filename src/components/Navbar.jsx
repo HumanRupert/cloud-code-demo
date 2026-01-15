@@ -32,7 +32,7 @@ export default function Navbar() {
             whileHover={{ rotate: 180 }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           />
-          <span>Semantic</span>
+          <span className="font-display">Semantic</span>
         </a>
 
         <div className="flex items-center gap-4">
