@@ -35,6 +35,19 @@ export default function Navbar() {
           <span className="font-display text-xl">Semantic</span>
         </a>
 
+        {/* Navigation Links */}
+        <div className="hidden md:flex items-center gap-8">
+          <a href="#vision" className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors">
+            Vision
+          </a>
+          <a href="#architecture" className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors">
+            How it Works
+          </a>
+          <a href="#features" className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors">
+            Features
+          </a>
+        </div>
+
         <div className="flex items-center gap-4">
           <motion.a
             href="#cta"
