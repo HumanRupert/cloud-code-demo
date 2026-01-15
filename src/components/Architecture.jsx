@@ -6,67 +6,75 @@ import { AnimatedCounter } from '../hooks/useCountUp';
 const agents = [
   {
     name: 'LangChain',
-    color: '#2D9CDB',
     logo: 'https://images.seeklogo.com/logo-png/52/1/langchain-logo-png_seeklogo-527539.png'
   },
   {
     name: 'Google ADK',
-    color: '#4285F4',
     logo: 'https://images.seeklogo.com/logo-png/35/1/google-g-2015-logo-png_seeklogo-352655.png'
   },
   {
     name: 'Gemini',
-    color: '#8E75B2',
     logo: 'https://images.seeklogo.com/logo-png/55/1/google-gemini-logo-png_seeklogo-556522.png'
   },
   {
     name: 'Claude',
-    color: '#D97706',
-    logo: 'https://images.seeklogo.com/logo-png/52/1/anthropic-logo-png_seeklogo-524837.png'
+    logo: 'https://images.seeklogo.com/logo-png/61/1/claude-ai-logo-png_seeklogo-614101.png'
   },
   {
     name: 'ChatGPT',
-    color: '#10A37F',
-    logo: 'https://images.seeklogo.com/logo-png/52/1/openai-logo-png_seeklogo-527024.png'
+    logo: 'https://images.seeklogo.com/logo-png/52/2/chatgpt-logo-png_seeklogo-527249.png'
   },
   {
     name: 'OpenAI SDK',
-    color: '#412991',
     logo: 'https://images.seeklogo.com/logo-png/52/1/openai-logo-png_seeklogo-527024.png'
   },
 ];
 
-// Payment rails with logos
-const paymentRails = [
+// Payment infrastructure grouped by category
+const paymentGroups = [
   {
-    name: 'Stripe',
-    color: '#635BFF',
-    logo: 'https://images.seeklogo.com/logo-png/52/1/stripe-logo-png_seeklogo-527130.png'
+    category: 'PSPs',
+    items: [
+      { name: 'Stripe', logo: 'https://images.seeklogo.com/logo-png/52/1/stripe-logo-png_seeklogo-527130.png' },
+      { name: 'Adyen', logo: 'https://images.seeklogo.com/logo-png/52/2/adyen-logo-png_seeklogo-527283.png' },
+    ],
   },
   {
-    name: 'Adyen',
-    color: '#0ABF53',
-    logo: 'https://images.seeklogo.com/logo-png/52/2/adyen-logo-png_seeklogo-527283.png'
+    category: 'Card Networks',
+    items: [
+      { name: 'Visa', logo: 'https://images.seeklogo.com/logo-png/52/1/visa-logo-png_seeklogo-527085.png' },
+      { name: 'Mastercard', logo: 'https://images.seeklogo.com/logo-png/48/1/mastercard-logo-png_seeklogo-489106.png' },
+    ],
   },
   {
-    name: 'Visa',
-    color: '#1A1F71',
-    logo: 'https://images.seeklogo.com/logo-png/52/1/visa-logo-png_seeklogo-527085.png'
+    category: 'BNPL',
+    items: [
+      { name: 'Tamara', logo: 'https://images.seeklogo.com/logo-png/52/1/tamara-logo-png_seeklogo-521906.png' },
+      { name: 'Tabby', logo: 'https://images.seeklogo.com/logo-png/50/1/tabby-logo-png_seeklogo-500498.png' },
+    ],
   },
   {
-    name: 'Mastercard',
-    color: '#EB001B',
-    logo: 'https://images.seeklogo.com/logo-png/48/1/mastercard-logo-png_seeklogo-489106.png'
+    category: 'Ecommerce',
+    items: [
+      { name: 'Shopify', logo: 'https://images.seeklogo.com/logo-png/52/1/shopify-logo-png_seeklogo-526853.png' },
+      { name: 'Salla', logo: 'https://images.seeklogo.com/logo-png/52/1/salla-logo-png_seeklogo-522966.png' },
+      { name: 'Zid', logo: 'https://images.seeklogo.com/logo-png/52/1/zid-logo-png_seeklogo-525084.png' },
+    ],
   },
   {
-    name: 'Shopify',
-    color: '#96BF48',
-    logo: 'https://images.seeklogo.com/logo-png/52/1/shopify-logo-png_seeklogo-526853.png'
+    category: 'Digital Assets',
+    items: [
+      { name: 'USDT', logo: 'https://images.seeklogo.com/logo-png/40/2/tether-usdt-logo-png_seeklogo-405426.png' },
+      { name: 'BTC', logo: 'https://images.seeklogo.com/logo-png/33/1/bitcoin-logo-png_seeklogo-336091.png' },
+      { name: 'ETH', logo: 'https://images.seeklogo.com/logo-png/38/1/ethereum-eth-logo-png_seeklogo-387956.png' },
+    ],
   },
   {
-    name: 'USDT',
-    color: '#26A17B',
-    logo: 'https://images.seeklogo.com/logo-png/40/2/tether-usdt-logo-png_seeklogo-405426.png'
+    category: 'Instant Payments',
+    items: [
+      { name: 'Aani', logo: 'https://images.seeklogo.com/logo-png/61/1/aani-logo-png_seeklogo-614848.png' },
+      { name: 'Pix', logo: 'https://images.seeklogo.com/logo-png/46/1/pix-logo-png_seeklogo-469741.png' },
+    ],
   },
 ];
 
@@ -91,10 +99,7 @@ const AgentNode = ({ item, index }) => {
           onError={() => setImgError(true)}
         />
       ) : (
-        <div
-          className="w-4 h-4 rounded-full flex-shrink-0"
-          style={{ backgroundColor: item.color }}
-        />
+        <div className="w-4 h-4 rounded-full flex-shrink-0 bg-sky-400" />
       )}
       <span className="text-sm font-medium text-gray-700 whitespace-nowrap">
         {item.name}
@@ -103,49 +108,70 @@ const AgentNode = ({ item, index }) => {
   );
 };
 
-// Payment rail node - shows logo only, text on hover
-const PaymentRailNode = ({ item, index }) => {
-  const [isHovered, setIsHovered] = useState(false);
+// Square logo box with hover popup
+const LogoBox = ({ item }) => {
   const [imgError, setImgError] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <motion.div
-      initial={{ opacity: 0, x: 30 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6, delay: 0.1 * index, ease: [0.16, 1, 0.3, 1] }}
-      whileHover={{ scale: 1.05, x: 5 }}
+    <div
+      className="relative"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="flex items-center gap-3 px-4 py-2.5 bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-md hover:border-sky-200 transition-all cursor-default flex-row-reverse"
     >
-      {!imgError ? (
-        <img
-          src={item.logo}
-          alt={item.name}
-          className="w-6 h-6 object-contain flex-shrink-0"
-          onError={() => setImgError(true)}
-        />
-      ) : (
-        <div
-          className="w-4 h-4 rounded-full flex-shrink-0"
-          style={{ backgroundColor: item.color }}
-        />
-      )}
-      <motion.span
-        initial={{ opacity: 0, width: 0 }}
+      {/* Popup on hover */}
+      <motion.div
+        initial={{ opacity: 0, y: 4 }}
         animate={{
           opacity: isHovered ? 1 : 0,
-          width: isHovered ? 'auto' : 0,
+          y: isHovered ? 0 : 4,
         }}
-        transition={{ duration: 0.2 }}
-        className="text-sm font-medium text-gray-700 whitespace-nowrap overflow-hidden"
+        transition={{ duration: 0.15 }}
+        className="absolute -top-8 left-1/2 -translate-x-1/2 px-2 py-1 bg-gray-900 text-white text-xs rounded whitespace-nowrap z-10 pointer-events-none"
       >
         {item.name}
-      </motion.span>
-    </motion.div>
+        <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-gray-900" />
+      </motion.div>
+
+      {/* Square logo box */}
+      <motion.div
+        whileHover={{ scale: 1.1 }}
+        className="w-10 h-10 flex items-center justify-center bg-white rounded-lg border border-gray-100 shadow-sm hover:shadow-md hover:border-sky-200 transition-all cursor-default"
+      >
+        {!imgError ? (
+          <img
+            src={item.logo}
+            alt={item.name}
+            className="w-6 h-6 object-contain"
+            onError={() => setImgError(true)}
+          />
+        ) : (
+          <div className="w-4 h-4 rounded-full bg-sky-400" />
+        )}
+      </motion.div>
+    </div>
   );
 };
+
+// Payment group with category label and logo boxes
+const PaymentGroup = ({ group, index }) => (
+  <motion.div
+    initial={{ opacity: 0, x: 30 }}
+    whileInView={{ opacity: 1, x: 0 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.6, delay: 0.1 * index, ease: [0.16, 1, 0.3, 1] }}
+    className="flex flex-col gap-2"
+  >
+    <span className="text-[10px] font-semibold text-gray-400 uppercase tracking-wider">
+      {group.category}
+    </span>
+    <div className="flex gap-2">
+      {group.items.map((item) => (
+        <LogoBox key={item.name} item={item} />
+      ))}
+    </div>
+  </motion.div>
+);
 
 const CentralHub = () => {
   const features = ['Policy Enforcement', 'Authorization', 'Accountability'];
@@ -208,66 +234,35 @@ const CentralHub = () => {
   );
 };
 
-// Enhanced particle with glow trail
-const GlowParticle = ({ side, index, startY, endY }) => {
-  const isLeft = side === 'left';
-  const delay = index * 0.4;
-
-  return (
-    <>
-      {/* Main particle with glow */}
-      <motion.div
-        className="absolute w-3 h-3 rounded-full"
-        style={{
-          left: isLeft ? '0%' : '0%',
-          top: startY,
-          background: 'radial-gradient(circle, #0ea5e9 0%, #0284c7 50%, transparent 70%)',
-          boxShadow: '0 0 20px 8px rgba(14, 165, 233, 0.6), 0 0 40px 16px rgba(14, 165, 233, 0.3)',
-        }}
-        animate={{
-          left: ['0%', '100%'],
-          top: [startY, endY],
-          scale: [0.5, 1.2, 0.5],
-        }}
-        transition={{
-          duration: 2,
-          delay: delay,
-          repeat: Infinity,
-          repeatDelay: 1,
-          ease: [0.16, 1, 0.3, 1],
-        }}
-      />
-      {/* Trail particles */}
-      {[1, 2, 3].map((trailIndex) => (
-        <motion.div
-          key={`trail-${side}-${index}-${trailIndex}`}
-          className="absolute w-2 h-2 rounded-full bg-sky-400/40"
-          style={{
-            left: isLeft ? '0%' : '0%',
-            top: startY,
-          }}
-          animate={{
-            left: ['0%', '100%'],
-            top: [startY, endY],
-            opacity: [0, 0.6, 0],
-            scale: [0.3, 0.8, 0.3],
-          }}
-          transition={{
-            duration: 2,
-            delay: delay + (trailIndex * 0.1),
-            repeat: Infinity,
-            repeatDelay: 1,
-            ease: [0.16, 1, 0.3, 1],
-          }}
-        />
-      ))}
-    </>
-  );
-};
+// Simple subtle particle
+const SimpleParticle = ({ index, startY, endY }) => (
+  <motion.div
+    className="absolute w-2 h-2 rounded-full bg-sky-400/80"
+    style={{
+      left: '0%',
+      top: startY,
+      boxShadow: '0 0 6px rgba(14, 165, 233, 0.4)',
+    }}
+    animate={{
+      left: ['0%', '100%'],
+      top: [startY, endY],
+      opacity: [0, 0.8, 0],
+    }}
+    transition={{
+      duration: 2.5,
+      delay: index * 1.5,
+      repeat: Infinity,
+      repeatDelay: 2,
+      ease: 'easeInOut',
+    }}
+  />
+);
 
 export default function Architecture() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
+
+  const totalGroups = paymentGroups.length;
 
   return (
     <section ref={ref} className="py-32 px-6 bg-gradient-to-b from-[#fafafa] to-gray-50 overflow-hidden">
@@ -304,13 +299,12 @@ export default function Architecture() {
             ))}
           </div>
 
-          {/* Left Flow Lines with Enhanced Particles */}
+          {/* Left Flow Lines */}
           <div className="hidden lg:block relative w-24 h-80">
             <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 320" preserveAspectRatio="none">
-              {/* Glow filter for paths */}
               <defs>
                 <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-                  <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                  <feGaussianBlur stdDeviation="1" result="coloredBlur"/>
                   <feMerge>
                     <feMergeNode in="coloredBlur"/>
                     <feMergeNode in="SourceGraphic"/>
@@ -318,136 +312,86 @@ export default function Architecture() {
                 </filter>
                 <linearGradient id="blueGradient" x1="0%" y1="0%" x2="100%" y2="0%">
                   <stop offset="0%" stopColor="#0ea5e9" stopOpacity="0.2" />
-                  <stop offset="50%" stopColor="#0ea5e9" stopOpacity="0.6" />
-                  <stop offset="100%" stopColor="#0ea5e9" stopOpacity="0.8" />
+                  <stop offset="50%" stopColor="#0ea5e9" stopOpacity="0.5" />
+                  <stop offset="100%" stopColor="#0ea5e9" stopOpacity="0.7" />
                 </linearGradient>
               </defs>
 
-              {/* Animated pulsing paths */}
               {agents.map((_, i) => {
                 const startY = 30 + (i * 260) / (agents.length - 1);
                 return (
-                  <g key={`left-line-${i}`}>
-                    {/* Base path */}
-                    <motion.path
-                      d={`M 0 ${startY} Q 50 ${startY} 100 160`}
-                      fill="none"
-                      stroke="url(#blueGradient)"
-                      strokeWidth="2"
-                      filter="url(#glow)"
-                      initial={{ pathLength: 0, opacity: 0 }}
-                      whileInView={{ pathLength: 1, opacity: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 1, delay: 0.3 + i * 0.1, ease: [0.16, 1, 0.3, 1] }}
-                    />
-                    {/* Animated pulse overlay */}
-                    <motion.path
-                      d={`M 0 ${startY} Q 50 ${startY} 100 160`}
-                      fill="none"
-                      stroke="#0ea5e9"
-                      strokeWidth="3"
-                      strokeOpacity="0.3"
-                      initial={{ pathLength: 0 }}
-                      animate={{
-                        pathLength: [0, 1],
-                        opacity: [0.8, 0],
-                      }}
-                      transition={{
-                        duration: 1.5,
-                        delay: i * 0.2,
-                        repeat: Infinity,
-                        repeatDelay: 2,
-                        ease: 'easeOut',
-                      }}
-                    />
-                  </g>
+                  <motion.path
+                    key={`left-line-${i}`}
+                    d={`M 0 ${startY} Q 50 ${startY} 100 160`}
+                    fill="none"
+                    stroke="url(#blueGradient)"
+                    strokeWidth="2"
+                    filter="url(#glow)"
+                    initial={{ pathLength: 0, opacity: 0 }}
+                    whileInView={{ pathLength: 1, opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1, delay: 0.3 + i * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                  />
                 );
               })}
             </svg>
 
-            {/* Enhanced glowing particles */}
-            <GlowParticle side="left" index={0} startY="10%" endY="50%" />
-            <GlowParticle side="left" index={1} startY="30%" endY="50%" />
-            <GlowParticle side="left" index={2} startY="50%" endY="50%" />
-            <GlowParticle side="left" index={3} startY="70%" endY="50%" />
-            <GlowParticle side="left" index={4} startY="90%" endY="50%" />
+            {/* Subtle particles */}
+            <SimpleParticle index={0} startY="25%" endY="50%" />
+            <SimpleParticle index={1} startY="75%" endY="50%" />
           </div>
 
           {/* Center: Semantic Hub */}
           <CentralHub />
 
-          {/* Right Flow Lines with Enhanced Particles */}
+          {/* Right Flow Lines */}
           <div className="hidden lg:block relative w-24 h-80">
             <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 320" preserveAspectRatio="none">
               <defs>
                 <linearGradient id="blueGradientRight" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="#0ea5e9" stopOpacity="0.8" />
-                  <stop offset="50%" stopColor="#0ea5e9" stopOpacity="0.6" />
+                  <stop offset="0%" stopColor="#0ea5e9" stopOpacity="0.7" />
+                  <stop offset="50%" stopColor="#0ea5e9" stopOpacity="0.5" />
                   <stop offset="100%" stopColor="#0ea5e9" stopOpacity="0.2" />
                 </linearGradient>
               </defs>
 
-              {paymentRails.map((_, i) => {
-                const endY = 30 + (i * 260) / (paymentRails.length - 1);
+              {paymentGroups.map((_, i) => {
+                const endY = 30 + (i * 260) / (totalGroups - 1);
                 return (
-                  <g key={`right-line-${i}`}>
-                    <motion.path
-                      d={`M 0 160 Q 50 ${endY} 100 ${endY}`}
-                      fill="none"
-                      stroke="url(#blueGradientRight)"
-                      strokeWidth="2"
-                      filter="url(#glow)"
-                      initial={{ pathLength: 0, opacity: 0 }}
-                      whileInView={{ pathLength: 1, opacity: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 1, delay: 0.8 + i * 0.08, ease: [0.16, 1, 0.3, 1] }}
-                    />
-                    {/* Animated pulse overlay */}
-                    <motion.path
-                      d={`M 0 160 Q 50 ${endY} 100 ${endY}`}
-                      fill="none"
-                      stroke="#0ea5e9"
-                      strokeWidth="3"
-                      strokeOpacity="0.3"
-                      initial={{ pathLength: 0 }}
-                      animate={{
-                        pathLength: [0, 1],
-                        opacity: [0.8, 0],
-                      }}
-                      transition={{
-                        duration: 1.5,
-                        delay: 0.5 + i * 0.2,
-                        repeat: Infinity,
-                        repeatDelay: 2,
-                        ease: 'easeOut',
-                      }}
-                    />
-                  </g>
+                  <motion.path
+                    key={`right-line-${i}`}
+                    d={`M 0 160 Q 50 ${endY} 100 ${endY}`}
+                    fill="none"
+                    stroke="url(#blueGradientRight)"
+                    strokeWidth="2"
+                    filter="url(#glow)"
+                    initial={{ pathLength: 0, opacity: 0 }}
+                    whileInView={{ pathLength: 1, opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1, delay: 0.8 + i * 0.08, ease: [0.16, 1, 0.3, 1] }}
+                  />
                 );
               })}
             </svg>
 
-            {/* Enhanced glowing particles going right */}
-            <GlowParticle side="right" index={0} startY="50%" endY="10%" />
-            <GlowParticle side="right" index={1} startY="50%" endY="30%" />
-            <GlowParticle side="right" index={2} startY="50%" endY="50%" />
-            <GlowParticle side="right" index={3} startY="50%" endY="70%" />
-            <GlowParticle side="right" index={4} startY="50%" endY="90%" />
+            {/* Subtle particles */}
+            <SimpleParticle index={0} startY="50%" endY="25%" />
+            <SimpleParticle index={1} startY="50%" endY="75%" />
           </div>
 
-          {/* Right Side: Payment Rails (logo only, text on hover) */}
-          <div className="flex flex-col gap-2.5">
+          {/* Right Side: Payment Infrastructure (grouped) */}
+          <div className="flex flex-col gap-4">
             <motion.span
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.5 }}
-              className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-2 text-center"
+              className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-1 text-center"
             >
-              Payment Rails
+              Payment Infrastructure
             </motion.span>
-            {paymentRails.map((rail, i) => (
-              <PaymentRailNode key={rail.name} item={rail} index={i} />
+            {paymentGroups.map((group, i) => (
+              <PaymentGroup key={group.category} group={group} index={i} />
             ))}
           </div>
         </div>
@@ -478,7 +422,7 @@ export default function Architecture() {
             →
           </motion.span>
           <div className="flex items-center gap-2">
-            <span className="text-sm">6 Payment Rails</span>
+            <span className="text-sm">14 Payment Rails</span>
             <div className="w-2 h-2 rounded-full bg-sky-400" />
           </div>
         </motion.div>
