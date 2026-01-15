@@ -112,7 +112,7 @@ export default function Vision() {
             initial={{ opacity: 0, y: 30 }}
             animate={isIntroInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900 leading-tight"
+            className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900 leading-tight font-display"
           >
             Semantic is the missing layer between{' '}
             <span className="gradient-text">agent intent</span> and{' '}
