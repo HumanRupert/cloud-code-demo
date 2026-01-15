@@ -25,14 +25,12 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         <a href="#" className="flex items-center gap-2 text-gray-900 font-semibold text-lg group">
-          <motion.img
+          <img
             src="/logo.png"
             alt="Semantic"
             className="w-12 h-12 object-contain"
-            whileHover={{ rotate: 180 }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           />
-          <span className="font-display text-xl">Semantic</span>
+          <span className="font-display text-2xl">Semantic</span>
         </a>
 
         {/* Navigation Links */}
