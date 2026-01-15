@@ -3,12 +3,12 @@ import { useEffect, useState } from 'react';
 
 const companyLogos = [
   { name: 'XBTO', logo: 'https://images.seeklogo.com/logo-png/52/1/xbto-logo-png_seeklogo-527029.png' },
-  { name: 'Tether', logo: 'https://cryptologos.cc/logos/tether-usdt-logo.svg' },
-  { name: 'Goldman Sachs', logo: 'https://upload.wikimedia.org/wikipedia/commons/6/61/Goldman_Sachs.svg' },
+  { name: 'Tether', logo: 'https://images.seeklogo.com/logo-png/40/2/tether-usdt-logo-png_seeklogo-405426.png' },
+  { name: 'Goldman Sachs', logo: 'https://images.seeklogo.com/logo-png/52/2/goldman-sachs-new-2022-logo-png_seeklogo-527445.png' },
   { name: 'Antler', logo: 'https://images.seeklogo.com/logo-png/52/1/antler-logo-png_seeklogo-526998.png' },
-  { name: 'Khalifa University', logo: 'https://upload.wikimedia.org/wikipedia/en/e/ed/Khalifa_University_logo.png' },
-  { name: 'Huawei', logo: 'https://upload.wikimedia.org/wikipedia/en/0/04/Huawei_Standard_logo.svg' },
-  { name: 'Nokia Bell Labs', logo: 'https://upload.wikimedia.org/wikipedia/commons/0/02/Nokia_Bell_Labs_logo.svg' },
+  { name: 'Khalifa University', logo: 'https://images.seeklogo.com/logo-png/33/1/khalifa-university-logo-png_seeklogo-334915.png' },
+  { name: 'Huawei', logo: 'https://images.seeklogo.com/logo-png/6/2/huawei-logo-png_seeklogo-68529.png' },
+  { name: 'Nokia Bell Labs', logo: 'https://images.seeklogo.com/logo-png/52/2/nokia-bell-labs-logo-png_seeklogo-526694.png' },
 ];
 
 const FloatingOrb = ({ className, delay = 0 }) => (

@@ -11,44 +11,55 @@ const agents = [
   { name: 'OpenAI SDK', color: '#412991' },
 ];
 
-// Payment rails data grouped
-const paymentRails = [
-  { name: 'Stripe', color: '#635BFF', category: 'PSP' },
-  { name: 'Adyen', color: '#0ABF53', category: 'PSP' },
-  { name: 'Visa', color: '#1A1F71', category: 'Card' },
-  { name: 'Mastercard', color: '#EB001B', category: 'Card' },
-  { name: 'USDT', color: '#26A17B', category: 'Crypto' },
-  { name: 'Pix', color: '#32BCAD', category: 'RTP' },
+// Payment rails grouped by category
+const paymentRailGroups = [
+  {
+    category: 'PSPs',
+    items: [
+      { name: 'Stripe', color: '#635BFF' },
+      { name: 'Adyen', color: '#0ABF53' },
+    ],
+  },
+  {
+    category: 'Card Networks',
+    items: [
+      { name: 'Visa', color: '#1A1F71' },
+      { name: 'Mastercard', color: '#EB001B' },
+    ],
+  },
+  {
+    category: 'BNPL',
+    items: [
+      { name: 'Tamara', color: '#3FBBAD' },
+      { name: 'Tabby', color: '#292929' },
+    ],
+  },
+  {
+    category: 'Ecommerce',
+    items: [
+      { name: 'Shopify', color: '#96BF48' },
+      { name: 'Salla', color: '#6C5CE7' },
+      { name: 'Zid', color: '#FF6B35' },
+    ],
+  },
+  {
+    category: 'Digital Assets',
+    items: [
+      { name: 'USDT', color: '#26A17B' },
+      { name: 'BTC', color: '#F7931A' },
+      { name: 'ETH', color: '#627EEA' },
+    ],
+  },
+  {
+    category: 'Instant Payments',
+    items: [
+      { name: 'Aani', color: '#00A651' },
+      { name: 'Pix', color: '#32BCAD' },
+    ],
+  },
 ];
 
-const FlowLine = ({ delay, reverse = false }) => (
-  <motion.div
-    className="absolute top-1/2 -translate-y-1/2 h-[2px] bg-gradient-to-r from-transparent via-sky-400 to-transparent"
-    style={{ width: '100%' }}
-    initial={{ opacity: 0, scaleX: 0 }}
-    whileInView={{ opacity: 1, scaleX: 1 }}
-    viewport={{ once: true }}
-    transition={{ duration: 1, delay, ease: [0.16, 1, 0.3, 1] }}
-  >
-    <motion.div
-      className="absolute top-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-sky-400 shadow-lg shadow-sky-400/50"
-      animate={{
-        left: reverse ? ['100%', '0%'] : ['0%', '100%'],
-        opacity: [0, 1, 1, 0],
-      }}
-      transition={{
-        duration: 2,
-        delay: delay + 0.5,
-        repeat: Infinity,
-        repeatDelay: 1,
-        ease: 'linear',
-      }}
-    />
-  </motion.div>
-);
-
-const NodeItem = ({ item, index, side, totalItems }) => {
-  const angle = (index / totalItems) * 180 - 90;
+const NodeItem = ({ item, index, side }) => {
   const isLeft = side === 'left';
 
   return (
@@ -73,6 +84,35 @@ const NodeItem = ({ item, index, side, totalItems }) => {
   );
 };
 
+const RailGroup = ({ group, index }) => (
+  <motion.div
+    initial={{ opacity: 0, x: 30 }}
+    whileInView={{ opacity: 1, x: 0 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.6, delay: 0.1 * index, ease: [0.16, 1, 0.3, 1] }}
+    className="bg-white rounded-xl border border-gray-100 p-3 shadow-sm hover:shadow-md hover:border-sky-200 transition-all"
+  >
+    <span className="text-[10px] font-semibold text-gray-400 uppercase tracking-wider">
+      {group.category}
+    </span>
+    <div className="flex flex-wrap gap-1.5 mt-2">
+      {group.items.map((item) => (
+        <motion.div
+          key={item.name}
+          whileHover={{ scale: 1.1 }}
+          className="flex items-center gap-1.5 px-2 py-1 bg-gray-50 rounded-md cursor-default"
+        >
+          <div
+            className="w-2 h-2 rounded-full flex-shrink-0"
+            style={{ backgroundColor: item.color }}
+          />
+          <span className="text-xs font-medium text-gray-600">{item.name}</span>
+        </motion.div>
+      ))}
+    </div>
+  </motion.div>
+);
+
 const CentralHub = () => {
   const features = ['Policy Enforcement', 'Authorization', 'Accountability'];
 
@@ -95,7 +135,7 @@ const CentralHub = () => {
       />
 
       {/* Main hub */}
-      <div className="relative w-48 h-48 rounded-full bg-gradient-to-br from-sky-500 to-blue-600 shadow-2xl shadow-blue-500/30 flex flex-col items-center justify-center p-6">
+      <div className="relative w-44 h-44 lg:w-48 lg:h-48 rounded-full bg-gradient-to-br from-sky-500 to-blue-600 shadow-2xl shadow-blue-500/30 flex flex-col items-center justify-center p-6">
         {/* Inner shimmer */}
         <div className="absolute inset-0 rounded-full overflow-hidden">
           <motion.div
@@ -138,6 +178,9 @@ export default function Architecture() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
 
+  // Calculate total rails for the SVG lines
+  const totalRails = paymentRailGroups.length;
+
   return (
     <section ref={ref} className="py-32 px-6 bg-gradient-to-b from-[#fafafa] to-gray-50 overflow-hidden">
       <div className="max-w-6xl mx-auto">
@@ -157,9 +200,9 @@ export default function Architecture() {
         </motion.div>
 
         {/* Architecture Visualization */}
-        <div className="relative flex items-center justify-center gap-8 lg:gap-16">
+        <div className="relative flex items-center justify-center gap-4 lg:gap-12">
           {/* Left Side: Agents */}
-          <div className="flex flex-col gap-3">
+          <div className="flex flex-col gap-2.5">
             <motion.span
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
@@ -169,19 +212,19 @@ export default function Architecture() {
               AI Agents
             </motion.span>
             {agents.map((agent, i) => (
-              <NodeItem key={agent.name} item={agent} index={i} side="left" totalItems={agents.length} />
+              <NodeItem key={agent.name} item={agent} index={i} side="left" />
             ))}
           </div>
 
           {/* Left Flow Lines */}
-          <div className="hidden lg:block relative w-24 h-64">
-            <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 300" preserveAspectRatio="none">
+          <div className="hidden lg:block relative w-20 h-72">
+            <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 320" preserveAspectRatio="none">
               {agents.map((_, i) => {
-                const startY = 30 + (i * 240) / (agents.length - 1);
+                const startY = 30 + (i * 260) / (agents.length - 1);
                 return (
                   <motion.path
                     key={`left-line-${i}`}
-                    d={`M 0 ${startY} Q 50 ${startY} 100 150`}
+                    d={`M 0 ${startY} Q 50 ${startY} 100 160`}
                     fill="none"
                     stroke="url(#blueGradient)"
                     strokeWidth="2"
@@ -205,17 +248,17 @@ export default function Architecture() {
               <motion.div
                 key={`particle-left-${i}`}
                 className="absolute w-2 h-2 rounded-full bg-sky-400 shadow-lg shadow-sky-400/50"
-                style={{ left: '0%', top: '20%' }}
+                style={{ left: '0%', top: '15%' }}
                 animate={{
                   left: ['0%', '100%'],
-                  top: ['20%', '50%'],
+                  top: ['15%', '50%'],
                   opacity: [0, 1, 0],
                 }}
                 transition={{
                   duration: 1.5,
-                  delay: i * 0.5,
+                  delay: i * 0.6,
                   repeat: Infinity,
-                  repeatDelay: 1,
+                  repeatDelay: 1.2,
                   ease: 'easeInOut',
                 }}
               />
@@ -226,21 +269,21 @@ export default function Architecture() {
           <CentralHub />
 
           {/* Right Flow Lines */}
-          <div className="hidden lg:block relative w-24 h-64">
-            <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 300" preserveAspectRatio="none">
-              {paymentRails.map((_, i) => {
-                const endY = 30 + (i * 240) / (paymentRails.length - 1);
+          <div className="hidden lg:block relative w-20 h-72">
+            <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 320" preserveAspectRatio="none">
+              {paymentRailGroups.map((_, i) => {
+                const endY = 30 + (i * 260) / (totalRails - 1);
                 return (
                   <motion.path
                     key={`right-line-${i}`}
-                    d={`M 0 150 Q 50 ${endY} 100 ${endY}`}
+                    d={`M 0 160 Q 50 ${endY} 100 ${endY}`}
                     fill="none"
                     stroke="url(#blueGradientRight)"
                     strokeWidth="2"
                     initial={{ pathLength: 0, opacity: 0 }}
                     whileInView={{ pathLength: 1, opacity: 0.6 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 1, delay: 0.8 + i * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                    transition={{ duration: 1, delay: 0.8 + i * 0.08, ease: [0.16, 1, 0.3, 1] }}
                   />
                 );
               })}
@@ -260,22 +303,22 @@ export default function Architecture() {
                 style={{ left: '0%', top: '50%' }}
                 animate={{
                   left: ['0%', '100%'],
-                  top: ['50%', '30%'],
+                  top: ['50%', '25%'],
                   opacity: [0, 1, 0],
                 }}
                 transition={{
                   duration: 1.5,
-                  delay: 0.5 + i * 0.5,
+                  delay: 0.3 + i * 0.6,
                   repeat: Infinity,
-                  repeatDelay: 1,
+                  repeatDelay: 1.2,
                   ease: 'easeInOut',
                 }}
               />
             ))}
           </div>
 
-          {/* Right Side: Payment Rails */}
-          <div className="flex flex-col gap-3">
+          {/* Right Side: Payment Rails (Grouped) */}
+          <div className="flex flex-col gap-2">
             <motion.span
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
@@ -285,8 +328,8 @@ export default function Architecture() {
             >
               Payment Rails
             </motion.span>
-            {paymentRails.map((rail, i) => (
-              <NodeItem key={rail.name} item={rail} index={i} side="right" totalItems={paymentRails.length} />
+            {paymentRailGroups.map((group, i) => (
+              <RailGroup key={group.category} group={group} index={i} />
             ))}
           </div>
         </div>
@@ -317,7 +360,7 @@ export default function Architecture() {
             →
           </motion.span>
           <div className="flex items-center gap-2">
-            <span className="text-sm">6 Payment Rails</span>
+            <span className="text-sm">14 Payment Rails</span>
             <div className="w-2 h-2 rounded-full bg-sky-400" />
           </div>
         </motion.div>
