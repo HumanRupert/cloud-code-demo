@@ -52,10 +52,6 @@ const LogoCarousel = () => {
   // All logos tripled for seamless loop
   const allLogos = [...companyLogos, ...companyLogos, ...companyLogos];
 
-  // Reversed order for row 2 so logos never align vertically
-  const reversedLogos = [...companyLogos].reverse();
-  const row2Logos = [...reversedLogos, ...reversedLogos, ...reversedLogos];
-
   return (
     <div className="relative mt-10 sm:mt-16 overflow-hidden">
       <motion.p
@@ -77,46 +73,16 @@ const LogoCarousel = () => {
           WebkitMaskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent)',
         }}
       >
-
-        {/* Mobile: Dual carousels - both show all logos, row 2 reversed */}
-        <div className="md:hidden">
-          {/* Row 1 - scrolls left - all logos */}
-          <div className="flex animate-scroll-logos mb-4">
-            {allLogos.map((company, index) => (
-              <div
-                key={`row1-${company.name}-${index}`}
-                className="flex-shrink-0 mx-4 h-12 flex items-center justify-center grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-500"
-              >
-                <LogoImage src={company.logo} alt={company.name} />
-              </div>
-            ))}
-          </div>
-
-          {/* Row 2 - scrolls right */}
-          <div className="flex animate-scroll-logos-reverse">
-            {row2Logos.map((company, index) => (
-              <div
-                key={`row2-${company.name}-${index}`}
-                className="flex-shrink-0 mx-4 h-12 flex items-center justify-center grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-500"
-              >
-                <LogoImage src={company.logo} alt={company.name} />
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Desktop: Single carousel */}
-        <div className="hidden md:block">
-          <div className="flex animate-scroll-logos">
-            {allLogos.map((company, index) => (
-              <div
-                key={`desktop-${company.name}-${index}`}
-                className="flex-shrink-0 mx-6 lg:mx-8 h-14 lg:h-16 flex items-center justify-center grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-500"
-              >
-                <LogoImage src={company.logo} alt={company.name} />
-              </div>
-            ))}
-          </div>
+        {/* Single carousel for all screen sizes */}
+        <div className="flex animate-scroll-logos">
+          {allLogos.map((company, index) => (
+            <div
+              key={`logo-${company.name}-${index}`}
+              className="flex-shrink-0 mx-4 sm:mx-6 lg:mx-8 h-12 sm:h-14 lg:h-16 flex items-center justify-center grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-500"
+            >
+              <LogoImage src={company.logo} alt={company.name} />
+            </div>
+          ))}
         </div>
       </motion.div>
     </div>
