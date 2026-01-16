@@ -160,7 +160,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex flex-col justify-center items-center px-4 sm:px-6 pt-20 sm:pt-24 pb-12 sm:pb-16 overflow-hidden bg-[#fafafa]">
+    <section className="relative min-h-[85vh] sm:min-h-screen flex flex-col justify-center items-center px-4 sm:px-6 pt-20 sm:pt-24 pb-8 sm:pb-16 overflow-hidden bg-[#fafafa]">
       {/* Animated Background Orbs with Parallax */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
@@ -203,7 +203,7 @@ export default function Hero() {
         {/* Title */}
         <div className="overflow-hidden">
           <motion.h1
-            className="text-3xl sm:text-4xl md:text-6xl lg:text-8xl font-bold tracking-tight text-gray-900"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold tracking-tight text-gray-900"
           >
             <motion.span
               initial={{ y: 100, opacity: 0 }}
