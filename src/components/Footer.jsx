@@ -11,7 +11,7 @@ export default function Footer() {
             className="flex items-center gap-2 text-gray-500 hover:text-gray-900 transition-colors"
           >
             <img src="/logo.png" alt="Semantic" className="w-6 h-6 object-contain" />
-            <span className="font-semibold">Semantic</span>
+            <span className="font-semibold font-display">Semantic</span>
           </motion.a>
 
 

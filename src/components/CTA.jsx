@@ -52,9 +52,12 @@ export default function CTA() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-6">
+          <h2
+            className="text-4xl sm:text-5xl md:text-6xl text-gray-900 mb-6"
+            style={{ fontFamily: 'Gambetta, serif', fontWeight: 400 }}
+          >
             Ready for{' '}
-            <span className="gradient-text">Agentic Commerce</span>?
+            <span className="gradient-text italic" style={{ fontWeight: 600 }}>Agentic Commerce</span>?
           </h2>
         </motion.div>
 

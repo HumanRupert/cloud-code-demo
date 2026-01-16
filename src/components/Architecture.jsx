@@ -193,7 +193,7 @@ const CentralHub = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.5 }}
-          className="text-white text-lg sm:text-xl font-bold mb-2 sm:mb-3 relative"
+          className="text-white text-lg sm:text-xl font-bold mb-2 sm:mb-3 relative font-display"
         >
           Semantic
         </motion.span>
