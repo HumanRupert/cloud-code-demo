@@ -19,7 +19,7 @@ const cards = [
   {
     icon: ClipboardList,
     title: 'End-to-end traceability',
-    description: 'Every action logged from prompt to settlement. Full audit trail for compliance and disputes.',
+    description: 'Every action logged from prompt to settlement. Cryptographic, irrefutable trail for compliance and disputes.',
     gradient: 'from-blue-500 to-sky-500',
   },
   {
