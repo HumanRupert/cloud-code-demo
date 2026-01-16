@@ -1,8 +1,8 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
-import { AnimatedCounter } from '../hooks/useCountUp';
+import { ChevronDown } from 'lucide-react';
 
-// Agent data with logos from seeklogo
+// Agent data with logos
 const agents = [
   {
     name: 'LangChain',
@@ -78,30 +78,30 @@ const paymentGroups = [
   },
 ];
 
-// Agent node - shows logo + text always
+// Agent node - shows logo + text always (responsive)
 const AgentNode = ({ item, index }) => {
   const [imgError, setImgError] = useState(false);
 
   return (
     <motion.div
-      initial={{ opacity: 0, x: -30 }}
-      whileInView={{ opacity: 1, x: 0 }}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay: 0.1 * index, ease: [0.16, 1, 0.3, 1] }}
-      whileHover={{ scale: 1.05, x: -5 }}
-      className="flex items-center gap-3 px-4 py-2.5 bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-md hover:border-sky-200 transition-all cursor-default"
+      whileHover={{ scale: 1.05 }}
+      className="flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-2 sm:py-2.5 bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-md hover:border-sky-200 transition-all cursor-default flex-shrink-0"
     >
       {!imgError ? (
         <img
           src={item.logo}
           alt={item.name}
-          className="w-6 h-6 object-contain flex-shrink-0"
+          className="w-5 h-5 sm:w-6 sm:h-6 object-contain flex-shrink-0"
           onError={() => setImgError(true)}
         />
       ) : (
         <div className="w-4 h-4 rounded-full flex-shrink-0 bg-sky-400" />
       )}
-      <span className="text-sm font-medium text-gray-700 whitespace-nowrap">
+      <span className="text-xs sm:text-sm font-medium text-gray-700 whitespace-nowrap">
         {item.name}
       </span>
     </motion.div>
@@ -136,13 +136,13 @@ const LogoBox = ({ item }) => {
       {/* Square logo box */}
       <motion.div
         whileHover={{ scale: 1.1 }}
-        className="w-12 h-12 flex items-center justify-center bg-white rounded-lg border border-gray-100 shadow-sm hover:shadow-md hover:border-sky-200 transition-all cursor-default"
+        className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center bg-white rounded-lg border border-gray-100 shadow-sm hover:shadow-md hover:border-sky-200 transition-all cursor-default"
       >
         {!imgError ? (
           <img
             src={item.logo}
             alt={item.name}
-            className="w-8 h-8 object-contain"
+            className="w-6 h-6 sm:w-8 sm:h-8 object-contain"
             onError={() => setImgError(true)}
           />
         ) : (
@@ -156,16 +156,16 @@ const LogoBox = ({ item }) => {
 // Payment group with category label and logo boxes
 const PaymentGroup = ({ group, index }) => (
   <motion.div
-    initial={{ opacity: 0, x: 30 }}
-    whileInView={{ opacity: 1, x: 0 }}
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true }}
     transition={{ duration: 0.6, delay: 0.1 * index, ease: [0.16, 1, 0.3, 1] }}
-    className="flex flex-col gap-2"
+    className="flex flex-col gap-1.5 sm:gap-2"
   >
-    <span className="text-[10px] font-semibold text-gray-400 uppercase tracking-wider">
+    <span className="text-[9px] sm:text-[10px] font-semibold text-gray-400 uppercase tracking-wider">
       {group.category}
     </span>
-    <div className="flex gap-2">
+    <div className="flex gap-1.5 sm:gap-2">
       {group.items.map((item) => (
         <LogoBox key={item.name} item={item} />
       ))}
@@ -173,6 +173,7 @@ const PaymentGroup = ({ group, index }) => (
   </motion.div>
 );
 
+// Central Hub - responsive sizing
 const CentralHub = () => {
   const features = ['Policy Enforcement', 'Authorization', 'Visibility'];
 
@@ -185,17 +186,17 @@ const CentralHub = () => {
       className="relative"
     >
       {/* Outer glow ring */}
-      <div className="absolute -inset-8 rounded-full bg-gradient-to-r from-sky-400/20 via-blue-500/20 to-sky-400/20 blur-2xl animate-pulse-glow" />
+      <div className="absolute -inset-6 sm:-inset-8 rounded-full bg-gradient-to-r from-sky-400/20 via-blue-500/20 to-sky-400/20 blur-2xl animate-pulse-glow" />
 
       {/* Rotating ring */}
       <motion.div
-        className="absolute -inset-4 rounded-full border-2 border-dashed border-sky-200"
+        className="absolute -inset-3 sm:-inset-4 rounded-full border-2 border-dashed border-sky-200"
         animate={{ rotate: 360 }}
         transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
       />
 
-      {/* Main hub */}
-      <div className="relative w-44 h-44 lg:w-48 lg:h-48 rounded-full bg-gradient-to-br from-sky-500 to-blue-600 shadow-2xl shadow-blue-500/30 flex flex-col items-center justify-center p-6">
+      {/* Main hub - responsive size */}
+      <div className="relative w-32 h-32 sm:w-40 sm:h-40 lg:w-48 lg:h-48 rounded-full bg-gradient-to-br from-sky-500 to-blue-600 shadow-2xl shadow-blue-500/30 flex flex-col items-center justify-center p-4 sm:p-6">
         {/* Inner shimmer */}
         <div className="absolute inset-0 rounded-full overflow-hidden">
           <motion.div
@@ -210,12 +211,12 @@ const CentralHub = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.5 }}
-          className="text-white text-xl font-bold mb-3 relative"
+          className="text-white text-lg sm:text-xl font-bold mb-2 sm:mb-3 relative"
         >
           Semantic
         </motion.span>
 
-        <div className="space-y-1.5 relative">
+        <div className="space-y-1 sm:space-y-1.5 relative">
           {features.map((feature, i) => (
             <motion.div
               key={feature}
@@ -223,7 +224,7 @@ const CentralHub = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.6 + i * 0.1 }}
-              className="text-xs text-white/80 text-center"
+              className="text-[10px] sm:text-xs text-white/80 text-center"
             >
               {feature}
             </motion.div>
@@ -234,7 +235,7 @@ const CentralHub = () => {
   );
 };
 
-// Simple subtle particle
+// Simple subtle particle for desktop
 const SimpleParticle = ({ index, startY, endY }) => (
   <motion.div
     className="absolute w-2 h-2 rounded-full bg-sky-400/80"
@@ -258,6 +259,24 @@ const SimpleParticle = ({ index, startY, endY }) => (
   />
 );
 
+// Vertical flow arrow for mobile
+const VerticalFlowArrow = () => (
+  <motion.div
+    initial={{ opacity: 0 }}
+    whileInView={{ opacity: 1 }}
+    viewport={{ once: true }}
+    className="flex flex-col items-center py-4 lg:hidden"
+  >
+    <motion.div
+      animate={{ y: [0, 8, 0] }}
+      transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
+      className="text-sky-400"
+    >
+      <ChevronDown className="w-6 h-6" />
+    </motion.div>
+  </motion.div>
+);
+
 export default function Architecture() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
@@ -265,41 +284,48 @@ export default function Architecture() {
   const totalGroups = paymentGroups.length;
 
   return (
-    <section id="architecture" ref={ref} className="py-32 px-6 bg-gradient-to-b from-[#fafafa] to-gray-50 overflow-hidden">
+    <section id="architecture" ref={ref} className="py-16 sm:py-24 lg:py-32 px-4 sm:px-6 bg-gradient-to-b from-[#fafafa] to-gray-50 overflow-hidden">
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="text-center mb-20"
+          className="text-center mb-12 sm:mb-16 lg:mb-20"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-3 sm:mb-4">
             How It Works
           </h2>
-          <p className="text-gray-500 text-lg max-w-2xl mx-auto">
+          <p className="text-gray-500 text-base sm:text-lg max-w-2xl mx-auto px-4">
             One integration connects AI agents to on-chain and off-chain payment infrastructure
           </p>
         </motion.div>
 
-        {/* Architecture Visualization */}
-        <div className="relative flex items-center justify-center gap-4 lg:gap-12">
-          {/* Left Side: Agents (logo + text always) */}
-          <div className="flex flex-col gap-2.5">
+        {/* Architecture Visualization - Vertical on mobile, Horizontal on desktop */}
+        <div className="relative flex flex-col lg:flex-row items-center justify-center gap-4 lg:gap-12">
+
+          {/* Agents Section */}
+          <div className="w-full lg:w-auto">
             <motion.span
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-2 text-center"
+              className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3 block text-center"
             >
               AI Agents
             </motion.span>
-            {agents.map((agent, i) => (
-              <AgentNode key={agent.name} item={agent} index={i} />
-            ))}
+            {/* Horizontal scroll on mobile, vertical stack on desktop */}
+            <div className="flex lg:flex-col gap-2 sm:gap-2.5 overflow-x-auto lg:overflow-visible pb-2 lg:pb-0 px-2 lg:px-0 justify-start lg:justify-center scrollbar-hide">
+              {agents.map((agent, i) => (
+                <AgentNode key={agent.name} item={agent} index={i} />
+              ))}
+            </div>
           </div>
 
-          {/* Left Flow Lines */}
+          {/* Vertical Flow Arrow (mobile only) */}
+          <VerticalFlowArrow />
+
+          {/* Left Flow Lines (desktop only) */}
           <div className="hidden lg:block relative w-24 h-80">
             <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 320" preserveAspectRatio="none">
               <defs>
@@ -344,7 +370,10 @@ export default function Architecture() {
           {/* Center: Semantic Hub */}
           <CentralHub />
 
-          {/* Right Flow Lines */}
+          {/* Vertical Flow Arrow (mobile only) */}
+          <VerticalFlowArrow />
+
+          {/* Right Flow Lines (desktop only) */}
           <div className="hidden lg:block relative w-24 h-80">
             <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 320" preserveAspectRatio="none">
               <defs>
@@ -379,54 +408,25 @@ export default function Architecture() {
             <SimpleParticle index={1} startY="50%" endY="75%" />
           </div>
 
-          {/* Right Side: Payment Infrastructure (grouped) */}
-          <div className="flex flex-col gap-4">
+          {/* Payment Infrastructure Section */}
+          <div className="w-full lg:w-auto">
             <motion.span
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.5 }}
-              className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-1 text-center"
+              className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3 block text-center"
             >
               Payment Infrastructure
             </motion.span>
-            {paymentGroups.map((group, i) => (
-              <PaymentGroup key={group.category} group={group} index={i} />
-            ))}
+            {/* Grid on mobile, vertical stack on desktop */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-1 gap-3 sm:gap-4 px-2 lg:px-0">
+              {paymentGroups.map((group, i) => (
+                <PaymentGroup key={group.category} group={group} index={i} />
+              ))}
+            </div>
           </div>
         </div>
-
-        {/* Mobile simplified view */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.5 }}
-          className="lg:hidden mt-12 flex items-center justify-center gap-4 text-gray-400"
-        >
-          <div className="flex items-center gap-2">
-            <div className="w-2 h-2 rounded-full bg-sky-400" />
-            <span className="text-sm">6 AI Agents</span>
-          </div>
-          <motion.span
-            animate={{ x: [0, 5, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
-          >
-            →
-          </motion.span>
-          <span className="text-sm font-semibold text-gray-600">Semantic</span>
-          <motion.span
-            animate={{ x: [0, 5, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity, delay: 0.3 }}
-          >
-            →
-          </motion.span>
-          <div className="flex items-center gap-2">
-            <span className="text-sm">14 Payment Rails</span>
-            <div className="w-2 h-2 rounded-full bg-sky-400" />
-          </div>
-        </motion.div>
-
       </div>
     </section>
   );

@@ -53,7 +53,7 @@ const LogoCarousel = () => {
   const triplicatedLogos = [...companyLogos, ...companyLogos, ...companyLogos];
 
   return (
-    <div className="relative mt-16 overflow-hidden">
+    <div className="relative mt-10 sm:mt-16 overflow-hidden">
       <motion.p
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -70,8 +70,8 @@ const LogoCarousel = () => {
         className="relative"
       >
         {/* Fade edges */}
-        <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-[#fafafa] to-transparent z-10" />
-        <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-[#fafafa] to-transparent z-10" />
+        <div className="absolute left-0 top-0 bottom-0 w-12 sm:w-20 lg:w-32 bg-gradient-to-r from-[#fafafa] to-transparent z-10" />
+        <div className="absolute right-0 top-0 bottom-0 w-12 sm:w-20 lg:w-32 bg-gradient-to-l from-[#fafafa] to-transparent z-10" />
 
         <div className="flex animate-scroll-logos">
           {triplicatedLogos.map((company, index) => (
@@ -123,7 +123,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex flex-col justify-center items-center px-6 pt-24 pb-16 overflow-hidden bg-[#fafafa]">
+    <section className="relative min-h-screen flex flex-col justify-center items-center px-4 sm:px-6 pt-20 sm:pt-24 pb-12 sm:pb-16 overflow-hidden bg-[#fafafa]">
       {/* Animated Background Orbs with Parallax */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
@@ -135,17 +135,17 @@ export default function Hero() {
           className="absolute inset-0"
         >
           <FloatingOrb
-            className="w-[600px] h-[600px] -top-48 -right-48 bg-gradient-to-br from-sky-200/40 to-blue-200/30"
+            className="w-[280px] h-[280px] sm:w-[400px] sm:h-[400px] lg:w-[600px] lg:h-[600px] -top-32 -right-32 sm:-top-48 sm:-right-48 bg-gradient-to-br from-sky-200/40 to-blue-200/30"
             delay={0}
             parallaxY={smoothY1}
           />
           <FloatingOrb
-            className="w-[400px] h-[400px] top-1/3 -left-32 bg-gradient-to-br from-blue-200/30 to-cyan-200/20"
+            className="w-[200px] h-[200px] sm:w-[300px] sm:h-[300px] lg:w-[400px] lg:h-[400px] top-1/3 -left-24 sm:-left-32 bg-gradient-to-br from-blue-200/30 to-cyan-200/20"
             delay={0.2}
             parallaxY={smoothY2}
           />
           <FloatingOrb
-            className="w-[300px] h-[300px] bottom-32 right-1/4 bg-gradient-to-br from-cyan-200/25 to-sky-200/20"
+            className="w-[180px] h-[180px] sm:w-[240px] sm:h-[240px] lg:w-[300px] lg:h-[300px] bottom-32 right-1/4 bg-gradient-to-br from-cyan-200/25 to-sky-200/20"
             delay={0.4}
             parallaxY={smoothY3}
           />

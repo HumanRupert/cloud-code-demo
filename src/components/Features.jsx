@@ -3,9 +3,9 @@ import { motion, AnimatePresence, useInView } from 'framer-motion';
 import { ShoppingCart, CreditCard, Code, Store, Globe, Shield, Wallet, Coins, Layers, FastForward } from 'lucide-react';
 
 const tabs = [
-  { id: 'ecommerce', label: 'Ecommerce Platforms', icon: Store },
-  { id: 'psps', label: 'PSPs', icon: CreditCard },
-  { id: 'developers', label: 'Developers', icon: Code },
+  { id: 'ecommerce', label: 'Ecommerce Platforms', shortLabel: 'Ecommerce', icon: Store },
+  { id: 'psps', label: 'PSPs', shortLabel: 'PSPs', icon: CreditCard },
+  { id: 'developers', label: 'Developers', shortLabel: 'Devs', icon: Code },
 ];
 
 const tabContent = {
@@ -100,7 +100,7 @@ const FeatureCard = ({ feature, index }) => (
 const TabButton = ({ tab, isActive, onClick, layoutId }) => (
   <motion.button
     onClick={onClick}
-    className={`relative px-6 py-3 text-sm font-medium rounded-full transition-colors duration-300 ${
+    className={`relative px-3 sm:px-6 py-2.5 sm:py-3 text-xs sm:text-sm font-medium rounded-full transition-colors duration-300 ${
       isActive ? 'text-white' : 'text-gray-600 hover:text-gray-900'
     }`}
     whileHover={{ scale: isActive ? 1 : 1.05 }}
@@ -113,9 +113,10 @@ const TabButton = ({ tab, isActive, onClick, layoutId }) => (
         transition={{ type: 'spring', stiffness: 500, damping: 35 }}
       />
     )}
-    <span className={`relative z-10 flex items-center gap-2 ${isActive ? 'text-white' : ''}`}>
+    <span className={`relative z-10 flex items-center gap-1.5 sm:gap-2 ${isActive ? 'text-white' : ''}`}>
       <tab.icon className="w-4 h-4" />
-      {tab.label}
+      <span className="hidden sm:inline">{tab.label}</span>
+      <span className="sm:hidden">{tab.shortLabel}</span>
     </span>
   </motion.button>
 );
@@ -128,7 +129,7 @@ export default function Features() {
   const content = tabContent[activeTab];
 
   return (
-    <section id="product" ref={ref} className="py-32 px-6 bg-white">
+    <section id="product" ref={ref} className="py-16 sm:py-24 lg:py-32 px-4 sm:px-6 bg-white">
       <div className="max-w-5xl mx-auto">
         {/* Section Header */}
         <motion.div
@@ -167,7 +168,7 @@ export default function Features() {
           transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
           className="relative"
         >
-          <div className="bg-gradient-to-br from-gray-50 to-white border border-gray-100 rounded-3xl p-8 sm:p-12 shadow-sm">
+          <div className="bg-gradient-to-br from-gray-50 to-white border border-gray-100 rounded-2xl sm:rounded-3xl p-5 sm:p-8 lg:p-12 shadow-sm">
             {/* Fixed height container to prevent layout shift */}
             <div className="min-h-[420px] sm:min-h-[380px]">
               <AnimatePresence mode="wait">

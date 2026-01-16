@@ -95,7 +95,7 @@ export default function Vision() {
   const isIntroInView = useInView(introRef, { once: true, margin: '-100px' });
 
   return (
-    <section id="vision" className="py-32 px-6 bg-[#fafafa]">
+    <section id="vision" className="py-16 sm:py-24 lg:py-32 px-4 sm:px-6 bg-[#fafafa]">
       <div className="max-w-6xl mx-auto">
         {/* Intro Text */}
         <motion.div
@@ -103,7 +103,7 @@ export default function Vision() {
           initial={{ opacity: 0 }}
           animate={isIntroInView ? { opacity: 1 } : {}}
           transition={{ duration: 1 }}
-          className="max-w-3xl mx-auto text-center mb-20"
+          className="max-w-3xl mx-auto text-center mb-12 sm:mb-16 lg:mb-20"
         >
           <motion.p
             initial={{ opacity: 0, y: 30 }}

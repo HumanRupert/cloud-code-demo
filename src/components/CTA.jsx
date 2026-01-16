@@ -8,7 +8,7 @@ export default function CTA() {
   const isInView = useInView(ref, { once: true, margin: '-100px' });
 
   return (
-    <section ref={ref} id="cta" className="py-32 px-6 relative overflow-hidden">
+    <section ref={ref} id="cta" className="py-16 sm:py-24 lg:py-32 px-4 sm:px-6 relative overflow-hidden">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-sky-50 via-blue-50/50 to-cyan-50/30" />
 
