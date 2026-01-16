@@ -157,7 +157,7 @@ const PaymentGroup = ({ group, index }) => (
 
 // Central Hub - responsive sizing
 const CentralHub = () => {
-  const features = ['Policy Enforcement', 'Authorization', 'Visibility'];
+  const features = ['Policy Enforcement', 'Authorization', 'Observability'];
 
   return (
     <motion.div
