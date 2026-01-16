@@ -47,7 +47,7 @@ const VisionCard = ({ card, index }) => {
       initial={{ opacity: 0, y: 60 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.8, delay: index * 0.15, ease: [0.16, 1, 0.3, 1] }}
-      className="group relative"
+      className="group relative h-full"
     >
       {/* Card glow effect */}
       <div className={`absolute -inset-0.5 bg-gradient-to-r ${card.gradient} rounded-2xl opacity-0 group-hover:opacity-20 blur-xl transition-all duration-500`} />
@@ -56,7 +56,7 @@ const VisionCard = ({ card, index }) => {
         ref={tiltRef}
         style={tiltStyle}
         {...handlers}
-        className="relative glass bg-white/80 border border-gray-100/50 rounded-2xl p-8 shadow-sm hover:shadow-xl transition-shadow duration-500 preserve-3d"
+        className="relative glass bg-white/80 border border-gray-100/50 rounded-2xl p-8 shadow-sm hover:shadow-xl transition-shadow duration-500 preserve-3d h-full"
       >
         {/* Icon - elevated for 3D effect */}
         <motion.div
