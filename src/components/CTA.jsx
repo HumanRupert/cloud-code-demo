@@ -57,7 +57,7 @@ export default function CTA() {
             style={{ fontFamily: 'Gambetta, serif', fontWeight: 400 }}
           >
             Ready for{' '}
-            <span className="gradient-text italic" style={{ fontWeight: 600 }}>Agentic Commerce</span>?
+            <span className="gradient-text italic pr-1" style={{ fontWeight: 600 }}>Agentic Commerce</span>?
           </h2>
         </motion.div>
 

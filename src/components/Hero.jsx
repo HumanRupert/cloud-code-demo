@@ -245,7 +245,7 @@ export default function Hero() {
               transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
               className="block"
             >
-              The <span className="gradient-text italic" style={{ fontWeight: 600 }}>Agentic</span>
+              The <span className="gradient-text italic pr-1" style={{ fontWeight: 600 }}>Agentic</span>
             </motion.span>
             <motion.span
               initial={{ y: 100, opacity: 0 }}
