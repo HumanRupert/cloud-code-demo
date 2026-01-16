@@ -50,7 +50,13 @@ const LogoImage = ({ src, alt }) => {
 };
 
 const LogoCarousel = () => {
-  const triplicatedLogos = [...companyLogos, ...companyLogos, ...companyLogos];
+  // Split logos into two groups for dual carousels
+  const firstHalf = companyLogos.slice(0, 5);
+  const secondHalf = companyLogos.slice(5);
+
+  // Triplicate each for seamless loop
+  const row1Logos = [...firstHalf, ...firstHalf, ...firstHalf];
+  const row2Logos = [...secondHalf, ...secondHalf, ...secondHalf];
 
   return (
     <div className="relative mt-10 sm:mt-16 overflow-hidden">
@@ -58,7 +64,7 @@ const LogoCarousel = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 1.2 }}
-        className="text-sm text-gray-400 uppercase tracking-widest text-center mb-8"
+        className="text-sm text-gray-400 uppercase tracking-widest text-center mb-6"
       >
         Built by Experts from
       </motion.p>
@@ -73,11 +79,24 @@ const LogoCarousel = () => {
         <div className="absolute left-0 top-0 bottom-0 w-12 sm:w-20 lg:w-32 bg-gradient-to-r from-[#fafafa] to-transparent z-10" />
         <div className="absolute right-0 top-0 bottom-0 w-12 sm:w-20 lg:w-32 bg-gradient-to-l from-[#fafafa] to-transparent z-10" />
 
-        <div className="flex animate-scroll-logos">
-          {triplicatedLogos.map((company, index) => (
+        {/* Row 1 - scrolls left */}
+        <div className="flex animate-scroll-logos mb-3">
+          {row1Logos.map((company, index) => (
             <div
-              key={`${company.name}-${index}`}
-              className="flex-shrink-0 mx-8 h-16 flex items-center justify-center grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-500"
+              key={`row1-${company.name}-${index}`}
+              className="flex-shrink-0 mx-4 sm:mx-6 lg:mx-8 h-12 sm:h-14 lg:h-16 flex items-center justify-center grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-500"
+            >
+              <LogoImage src={company.logo} alt={company.name} />
+            </div>
+          ))}
+        </div>
+
+        {/* Row 2 - scrolls right */}
+        <div className="flex animate-scroll-logos-reverse">
+          {row2Logos.map((company, index) => (
+            <div
+              key={`row2-${company.name}-${index}`}
+              className="flex-shrink-0 mx-4 sm:mx-6 lg:mx-8 h-12 sm:h-14 lg:h-16 flex items-center justify-center grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-500"
             >
               <LogoImage src={company.logo} alt={company.name} />
             </div>
@@ -166,7 +185,7 @@ export default function Hero() {
         {/* Title */}
         <div className="overflow-hidden">
           <motion.h1
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold tracking-tight text-gray-900"
+            className="text-3xl sm:text-4xl md:text-6xl lg:text-8xl font-bold tracking-tight text-gray-900"
           >
             <motion.span
               initial={{ y: 100, opacity: 0 }}
