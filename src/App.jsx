@@ -6,21 +6,24 @@ import Features from './components/Features';
 import CTA from './components/CTA';
 import Footer from './components/Footer';
 import ScrollProgress from './components/ScrollProgress';
+import Preloader from './components/Preloader';
 
 function App() {
   return (
-    <div className="min-h-screen bg-[#fafafa]">
-      <ScrollProgress />
-      <Navbar />
-      <main>
-        <Hero />
-        <Vision />
-        <Architecture />
-        <Features />
-        <CTA />
-      </main>
-      <Footer />
-    </div>
+    <Preloader>
+      <div className="min-h-screen bg-[#fafafa]">
+        <ScrollProgress />
+        <Navbar />
+        <main>
+          <Hero />
+          <Vision />
+          <Architecture />
+          <Features />
+          <CTA />
+        </main>
+        <Footer />
+      </div>
+    </Preloader>
   );
 }
 
