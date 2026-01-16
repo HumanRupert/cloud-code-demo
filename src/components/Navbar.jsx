@@ -97,7 +97,10 @@ export default function Navbar() {
 
           {/* Hamburger Menu Button - visible on mobile */}
           <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            onClick={(e) => {
+              e.stopPropagation();
+              setIsMenuOpen(!isMenuOpen);
+            }}
             className="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
             aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
           >

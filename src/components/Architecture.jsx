@@ -89,7 +89,7 @@ const AgentNode = ({ item, index }) => {
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay: 0.1 * index, ease: [0.16, 1, 0.3, 1] }}
       whileHover={{ scale: 1.05 }}
-      className="flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-2 sm:py-2.5 bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-md hover:border-sky-200 transition-all cursor-default flex-shrink-0"
+      className="flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-2 sm:py-2.5 bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-md hover:border-sky-200 transition-all cursor-default"
     >
       {!imgError ? (
         <img
@@ -314,8 +314,8 @@ export default function Architecture() {
             >
               AI Agents
             </motion.span>
-            {/* Horizontal scroll on mobile, vertical stack on desktop */}
-            <div className="flex lg:flex-col gap-2 sm:gap-2.5 overflow-x-auto lg:overflow-visible pb-2 lg:pb-0 px-2 lg:px-0 justify-start lg:justify-center scrollbar-hide">
+            {/* Grid on mobile, vertical stack on desktop */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-1 gap-2 sm:gap-2.5 px-2 lg:px-0">
               {agents.map((agent, i) => (
                 <AgentNode key={agent.name} item={agent} index={i} />
               ))}
