@@ -43,21 +43,18 @@ const LogoImage = ({ src, alt }) => {
         onLoad={() => setLoaded(true)}
         onError={() => setError(true)}
         className={`max-h-full max-w-full object-contain transition-opacity duration-500 ${loaded ? 'opacity-100' : 'opacity-0'}`}
-        loading="lazy"
       />
     </div>
   );
 };
 
 const LogoCarousel = () => {
-  // Split logos into two groups for mobile dual carousels
-  const firstHalf = companyLogos.slice(0, 5);
-  const secondHalf = companyLogos.slice(5);
-
-  // Triplicate for seamless loop
-  const row1Logos = [...firstHalf, ...firstHalf, ...firstHalf];
-  const row2Logos = [...secondHalf, ...secondHalf, ...secondHalf];
+  // All logos tripled for seamless loop
   const allLogos = [...companyLogos, ...companyLogos, ...companyLogos];
+
+  // Reversed order for row 2 so logos never align vertically
+  const reversedLogos = [...companyLogos].reverse();
+  const row2Logos = [...reversedLogos, ...reversedLogos, ...reversedLogos];
 
   return (
     <div className="relative mt-10 sm:mt-16 overflow-hidden">
@@ -81,11 +78,11 @@ const LogoCarousel = () => {
         }}
       >
 
-        {/* Mobile: Dual carousels */}
+        {/* Mobile: Dual carousels - both show all logos, row 2 reversed */}
         <div className="md:hidden">
-          {/* Row 1 - scrolls left */}
+          {/* Row 1 - scrolls left - all logos */}
           <div className="flex animate-scroll-logos mb-4">
-            {row1Logos.map((company, index) => (
+            {allLogos.map((company, index) => (
               <div
                 key={`row1-${company.name}-${index}`}
                 className="flex-shrink-0 mx-4 h-12 flex items-center justify-center grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-500"
