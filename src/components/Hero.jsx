@@ -237,7 +237,7 @@ export default function Hero() {
         <div className="overflow-hidden">
           <motion.h1
             className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight text-gray-900"
-            style={{ fontFamily: 'Gambetta, serif', fontWeight: 300 }}
+            style={{ fontFamily: 'Gambetta, serif', fontWeight: 400 }}
           >
             <motion.span
               initial={{ y: 100, opacity: 0 }}
@@ -245,7 +245,7 @@ export default function Hero() {
               transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
               className="block"
             >
-              The <span className="text-sky-500 italic" style={{ fontWeight: 500 }}>Agentic</span>
+              The <span className="text-sky-500 italic" style={{ fontWeight: 600 }}>Agentic</span>
             </motion.span>
             <motion.span
               initial={{ y: 100, opacity: 0 }}
