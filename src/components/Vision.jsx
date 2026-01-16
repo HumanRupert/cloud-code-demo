@@ -7,7 +7,7 @@ const cards = [
   {
     icon: Shield,
     title: 'Human oversight & guardrails',
-    description: 'Policy controls, approval workflows, and spending limits — humans remain the final authority.',
+    description: 'Policy controls, approval workflows, and spending limits. Humans remain the final authority.',
     gradient: 'from-sky-400 to-blue-500',
   },
   {
