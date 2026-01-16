@@ -166,14 +166,14 @@ export default function Hero() {
       <div className="absolute inset-0 overflow-hidden">
         {/* Flowing blob 1 - moves diagonally */}
         <motion.div
-          className="absolute w-[600px] h-[600px] sm:w-[800px] sm:h-[800px] rounded-full bg-gradient-to-br from-sky-300/40 to-blue-400/30 blur-3xl"
+          className="absolute w-[600px] h-[600px] sm:w-[800px] sm:h-[800px] rounded-full bg-gradient-to-br from-sky-300/50 to-blue-400/40 blur-3xl"
           animate={{
             x: ['-20%', '30%', '10%', '-20%'],
             y: ['10%', '40%', '70%', '10%'],
             scale: [1, 1.2, 0.9, 1],
           }}
           transition={{
-            duration: 8,
+            duration: 6,
             repeat: Infinity,
             ease: 'easeInOut',
           }}
@@ -182,14 +182,14 @@ export default function Hero() {
 
         {/* Flowing blob 2 - moves opposite direction */}
         <motion.div
-          className="absolute w-[500px] h-[500px] sm:w-[700px] sm:h-[700px] rounded-full bg-gradient-to-br from-cyan-300/35 to-sky-400/25 blur-3xl"
+          className="absolute w-[500px] h-[500px] sm:w-[700px] sm:h-[700px] rounded-full bg-gradient-to-br from-cyan-300/45 to-sky-400/35 blur-3xl"
           animate={{
             x: ['60%', '20%', '50%', '60%'],
             y: ['60%', '20%', '50%', '60%'],
             scale: [1, 0.85, 1.1, 1],
           }}
           transition={{
-            duration: 10,
+            duration: 7,
             repeat: Infinity,
             ease: 'easeInOut',
           }}
@@ -198,14 +198,14 @@ export default function Hero() {
 
         {/* Flowing blob 3 - slower, larger */}
         <motion.div
-          className="absolute w-[400px] h-[400px] sm:w-[600px] sm:h-[600px] rounded-full bg-gradient-to-br from-blue-300/30 to-cyan-300/20 blur-3xl"
+          className="absolute w-[400px] h-[400px] sm:w-[600px] sm:h-[600px] rounded-full bg-gradient-to-br from-blue-300/40 to-cyan-300/30 blur-3xl"
           animate={{
             x: ['30%', '-10%', '40%', '30%'],
             y: ['70%', '30%', '50%', '70%'],
             scale: [1.1, 1, 1.2, 1.1],
           }}
           transition={{
-            duration: 12,
+            duration: 9,
             repeat: Infinity,
             ease: 'easeInOut',
           }}
