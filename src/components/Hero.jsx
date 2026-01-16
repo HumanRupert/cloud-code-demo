@@ -50,13 +50,14 @@ const LogoImage = ({ src, alt }) => {
 };
 
 const LogoCarousel = () => {
-  // Split logos into two groups for dual carousels
+  // Split logos into two groups for mobile dual carousels
   const firstHalf = companyLogos.slice(0, 5);
   const secondHalf = companyLogos.slice(5);
 
-  // Triplicate each for seamless loop
+  // Triplicate for seamless loop
   const row1Logos = [...firstHalf, ...firstHalf, ...firstHalf];
   const row2Logos = [...secondHalf, ...secondHalf, ...secondHalf];
+  const allLogos = [...companyLogos, ...companyLogos, ...companyLogos];
 
   return (
     <div className="relative mt-10 sm:mt-16 overflow-hidden">
@@ -79,28 +80,45 @@ const LogoCarousel = () => {
         <div className="absolute left-0 top-0 bottom-0 w-12 sm:w-20 lg:w-32 bg-gradient-to-r from-[#fafafa] to-transparent z-10" />
         <div className="absolute right-0 top-0 bottom-0 w-12 sm:w-20 lg:w-32 bg-gradient-to-l from-[#fafafa] to-transparent z-10" />
 
-        {/* Row 1 - scrolls left */}
-        <div className="flex animate-scroll-logos mb-3">
-          {row1Logos.map((company, index) => (
-            <div
-              key={`row1-${company.name}-${index}`}
-              className="flex-shrink-0 mx-4 sm:mx-6 lg:mx-8 h-12 sm:h-14 lg:h-16 flex items-center justify-center grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-500"
-            >
-              <LogoImage src={company.logo} alt={company.name} />
-            </div>
-          ))}
+        {/* Mobile: Dual carousels */}
+        <div className="md:hidden">
+          {/* Row 1 - scrolls left */}
+          <div className="flex animate-scroll-logos mb-4">
+            {row1Logos.map((company, index) => (
+              <div
+                key={`row1-${company.name}-${index}`}
+                className="flex-shrink-0 mx-4 h-12 flex items-center justify-center grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-500"
+              >
+                <LogoImage src={company.logo} alt={company.name} />
+              </div>
+            ))}
+          </div>
+
+          {/* Row 2 - scrolls right */}
+          <div className="flex animate-scroll-logos-reverse">
+            {row2Logos.map((company, index) => (
+              <div
+                key={`row2-${company.name}-${index}`}
+                className="flex-shrink-0 mx-4 h-12 flex items-center justify-center grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-500"
+              >
+                <LogoImage src={company.logo} alt={company.name} />
+              </div>
+            ))}
+          </div>
         </div>
 
-        {/* Row 2 - scrolls right */}
-        <div className="flex animate-scroll-logos-reverse">
-          {row2Logos.map((company, index) => (
-            <div
-              key={`row2-${company.name}-${index}`}
-              className="flex-shrink-0 mx-4 sm:mx-6 lg:mx-8 h-12 sm:h-14 lg:h-16 flex items-center justify-center grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-500"
-            >
-              <LogoImage src={company.logo} alt={company.name} />
-            </div>
-          ))}
+        {/* Desktop: Single carousel */}
+        <div className="hidden md:block">
+          <div className="flex animate-scroll-logos">
+            {allLogos.map((company, index) => (
+              <div
+                key={`desktop-${company.name}-${index}`}
+                className="flex-shrink-0 mx-6 lg:mx-8 h-14 lg:h-16 flex items-center justify-center grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-500"
+              >
+                <LogoImage src={company.logo} alt={company.name} />
+              </div>
+            ))}
+          </div>
         </div>
       </motion.div>
     </div>
@@ -181,7 +199,7 @@ export default function Hero() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-5xl mx-auto text-center">
+      <div className="relative z-10 w-full max-w-5xl mx-auto text-center px-4">
         {/* Title */}
         <div className="overflow-hidden">
           <motion.h1

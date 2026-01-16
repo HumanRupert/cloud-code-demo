@@ -196,7 +196,7 @@ const CentralHub = () => {
       />
 
       {/* Main hub - responsive size */}
-      <div className="relative w-32 h-32 sm:w-40 sm:h-40 lg:w-48 lg:h-48 rounded-full bg-gradient-to-br from-sky-500 to-blue-600 shadow-2xl shadow-blue-500/30 flex flex-col items-center justify-center p-4 sm:p-6">
+      <div className="relative w-40 h-40 sm:w-44 sm:h-44 lg:w-48 lg:h-48 rounded-full bg-gradient-to-br from-sky-500 to-blue-600 shadow-2xl shadow-blue-500/30 flex flex-col items-center justify-center p-5 sm:p-6">
         {/* Inner shimmer */}
         <div className="absolute inset-0 rounded-full overflow-hidden">
           <motion.div

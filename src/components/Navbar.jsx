@@ -40,8 +40,16 @@ export default function Navbar() {
     return () => document.removeEventListener('keydown', handleEscape);
   }, []);
 
-  const handleLinkClick = () => {
+  const handleLinkClick = (e, href) => {
+    e.preventDefault();
     setIsMenuOpen(false);
+    // Small delay to allow menu to close before scrolling
+    setTimeout(() => {
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 100);
   };
 
   return (
@@ -129,7 +137,7 @@ export default function Navbar() {
                   <motion.a
                     key={link.href}
                     href={link.href}
-                    onClick={handleLinkClick}
+                    onClick={(e) => handleLinkClick(e, link.href)}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.1 }}
@@ -141,7 +149,7 @@ export default function Navbar() {
                 {/* Mobile CTA */}
                 <motion.a
                   href="#cta"
-                  onClick={handleLinkClick}
+                  onClick={(e) => handleLinkClick(e, '#cta')}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: navLinks.length * 0.1 }}
