@@ -170,10 +170,10 @@ export default function Hero() {
           animate={{
             x: ['-20%', '30%', '10%', '-20%'],
             y: ['10%', '40%', '70%', '10%'],
-            scale: [1, 1.2, 0.9, 1],
+            scale: [1, 1.1, 0.95, 1],
           }}
           transition={{
-            duration: 6,
+            duration: 15,
             repeat: Infinity,
             ease: 'easeInOut',
           }}
@@ -186,10 +186,10 @@ export default function Hero() {
           animate={{
             x: ['60%', '20%', '50%', '60%'],
             y: ['60%', '20%', '50%', '60%'],
-            scale: [1, 0.85, 1.1, 1],
+            scale: [1, 0.9, 1.05, 1],
           }}
           transition={{
-            duration: 7,
+            duration: 18,
             repeat: Infinity,
             ease: 'easeInOut',
           }}
@@ -202,10 +202,10 @@ export default function Hero() {
           animate={{
             x: ['30%', '-10%', '40%', '30%'],
             y: ['70%', '30%', '50%', '70%'],
-            scale: [1.1, 1, 1.2, 1.1],
+            scale: [1.05, 1, 1.1, 1.05],
           }}
           transition={{
-            duration: 9,
+            duration: 20,
             repeat: Infinity,
             ease: 'easeInOut',
           }}
