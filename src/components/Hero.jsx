@@ -163,67 +163,53 @@ export default function Hero() {
     <section className="relative min-h-[85vh] sm:min-h-screen flex flex-col justify-center items-center px-4 sm:px-6 pt-20 sm:pt-24 pb-8 sm:pb-16 overflow-hidden bg-[#fafafa]">
       {/* Animated Flowing Background */}
       <div className="absolute inset-0 overflow-hidden">
-        {/* Flowing gradient layers */}
+        {/* Flowing blob 1 - moves diagonally */}
         <motion.div
-          className="absolute inset-0 opacity-60"
+          className="absolute w-[600px] h-[600px] sm:w-[800px] sm:h-[800px] rounded-full bg-gradient-to-br from-sky-300/40 to-blue-400/30 blur-3xl"
           animate={{
-            background: [
-              'radial-gradient(ellipse 80% 50% at 20% 40%, rgba(14, 165, 233, 0.15) 0%, transparent 50%), radial-gradient(ellipse 60% 40% at 80% 60%, rgba(56, 189, 248, 0.12) 0%, transparent 50%)',
-              'radial-gradient(ellipse 80% 50% at 50% 60%, rgba(14, 165, 233, 0.15) 0%, transparent 50%), radial-gradient(ellipse 60% 40% at 30% 30%, rgba(56, 189, 248, 0.12) 0%, transparent 50%)',
-              'radial-gradient(ellipse 80% 50% at 80% 30%, rgba(14, 165, 233, 0.15) 0%, transparent 50%), radial-gradient(ellipse 60% 40% at 50% 70%, rgba(56, 189, 248, 0.12) 0%, transparent 50%)',
-              'radial-gradient(ellipse 80% 50% at 20% 40%, rgba(14, 165, 233, 0.15) 0%, transparent 50%), radial-gradient(ellipse 60% 40% at 80% 60%, rgba(56, 189, 248, 0.12) 0%, transparent 50%)',
-            ],
+            x: ['-20%', '30%', '10%', '-20%'],
+            y: ['10%', '40%', '70%', '10%'],
+            scale: [1, 1.2, 0.9, 1],
           }}
           transition={{
-            duration: 15,
+            duration: 8,
             repeat: Infinity,
             ease: 'easeInOut',
           }}
+          style={{ top: '-20%', left: '-10%' }}
         />
 
-        {/* Second flowing layer */}
+        {/* Flowing blob 2 - moves opposite direction */}
         <motion.div
-          className="absolute inset-0 opacity-40"
+          className="absolute w-[500px] h-[500px] sm:w-[700px] sm:h-[700px] rounded-full bg-gradient-to-br from-cyan-300/35 to-sky-400/25 blur-3xl"
           animate={{
-            background: [
-              'radial-gradient(ellipse 70% 60% at 70% 20%, rgba(125, 211, 252, 0.2) 0%, transparent 50%)',
-              'radial-gradient(ellipse 70% 60% at 40% 50%, rgba(125, 211, 252, 0.2) 0%, transparent 50%)',
-              'radial-gradient(ellipse 70% 60% at 60% 80%, rgba(125, 211, 252, 0.2) 0%, transparent 50%)',
-              'radial-gradient(ellipse 70% 60% at 70% 20%, rgba(125, 211, 252, 0.2) 0%, transparent 50%)',
-            ],
+            x: ['60%', '20%', '50%', '60%'],
+            y: ['60%', '20%', '50%', '60%'],
+            scale: [1, 0.85, 1.1, 1],
           }}
           transition={{
-            duration: 20,
+            duration: 10,
             repeat: Infinity,
             ease: 'easeInOut',
           }}
+          style={{ top: '20%', right: '-20%' }}
         />
 
-        {/* Mouse-following orbs */}
+        {/* Flowing blob 3 - slower, larger */}
         <motion.div
+          className="absolute w-[400px] h-[400px] sm:w-[600px] sm:h-[600px] rounded-full bg-gradient-to-br from-blue-300/30 to-cyan-300/20 blur-3xl"
           animate={{
-            x: mousePosition.x,
-            y: mousePosition.y,
+            x: ['30%', '-10%', '40%', '30%'],
+            y: ['70%', '30%', '50%', '70%'],
+            scale: [1.1, 1, 1.2, 1.1],
           }}
-          transition={{ type: 'spring', stiffness: 50, damping: 30 }}
-          className="absolute inset-0"
-        >
-          <FloatingOrb
-            className="w-[280px] h-[280px] sm:w-[400px] sm:h-[400px] lg:w-[600px] lg:h-[600px] -top-32 -right-32 sm:-top-48 sm:-right-48 bg-gradient-to-br from-sky-200/30 to-blue-200/20"
-            delay={0}
-            parallaxY={smoothY1}
-          />
-          <FloatingOrb
-            className="w-[200px] h-[200px] sm:w-[300px] sm:h-[300px] lg:w-[400px] lg:h-[400px] top-1/3 -left-24 sm:-left-32 bg-gradient-to-br from-blue-200/20 to-cyan-200/15"
-            delay={0.2}
-            parallaxY={smoothY2}
-          />
-          <FloatingOrb
-            className="w-[180px] h-[180px] sm:w-[240px] sm:h-[240px] lg:w-[300px] lg:h-[300px] bottom-32 right-1/4 bg-gradient-to-br from-cyan-200/20 to-sky-200/15"
-            delay={0.4}
-            parallaxY={smoothY3}
-          />
-        </motion.div>
+          transition={{
+            duration: 12,
+            repeat: Infinity,
+            ease: 'easeInOut',
+          }}
+          style={{ bottom: '-10%', left: '20%' }}
+        />
 
         {/* Grid pattern overlay */}
         <div
