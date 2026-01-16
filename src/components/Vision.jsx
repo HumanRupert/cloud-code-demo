@@ -1,6 +1,6 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { Shield, Lock, Zap } from 'lucide-react';
+import { Shield, Lock, Zap, ClipboardList } from 'lucide-react';
 import { use3DTilt } from '../hooks/use3DTilt';
 
 const cards = [
@@ -15,6 +15,12 @@ const cards = [
     title: 'Accountability & authorization',
     description: 'Every agent linked to a verified human via World ID. Signed credentials. Dispute resolution built in.',
     gradient: 'from-blue-500 to-blue-600',
+  },
+  {
+    icon: ClipboardList,
+    title: 'End-to-end traceability',
+    description: 'Every action logged from prompt to settlement. Full audit trail for compliance and disputes.',
+    gradient: 'from-blue-500 to-sky-500',
   },
   {
     icon: Zap,
@@ -121,7 +127,7 @@ export default function Vision() {
         </motion.div>
 
         {/* Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {cards.map((card, index) => (
             <VisionCard key={card.title} card={card} index={index} />
           ))}
