@@ -161,8 +161,45 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-[85vh] sm:min-h-screen flex flex-col justify-center items-center px-4 sm:px-6 pt-20 sm:pt-24 pb-8 sm:pb-16 overflow-hidden bg-[#fafafa]">
-      {/* Animated Background Orbs with Parallax */}
+      {/* Animated Flowing Background */}
       <div className="absolute inset-0 overflow-hidden">
+        {/* Flowing gradient layers */}
+        <motion.div
+          className="absolute inset-0 opacity-60"
+          animate={{
+            background: [
+              'radial-gradient(ellipse 80% 50% at 20% 40%, rgba(14, 165, 233, 0.15) 0%, transparent 50%), radial-gradient(ellipse 60% 40% at 80% 60%, rgba(56, 189, 248, 0.12) 0%, transparent 50%)',
+              'radial-gradient(ellipse 80% 50% at 50% 60%, rgba(14, 165, 233, 0.15) 0%, transparent 50%), radial-gradient(ellipse 60% 40% at 30% 30%, rgba(56, 189, 248, 0.12) 0%, transparent 50%)',
+              'radial-gradient(ellipse 80% 50% at 80% 30%, rgba(14, 165, 233, 0.15) 0%, transparent 50%), radial-gradient(ellipse 60% 40% at 50% 70%, rgba(56, 189, 248, 0.12) 0%, transparent 50%)',
+              'radial-gradient(ellipse 80% 50% at 20% 40%, rgba(14, 165, 233, 0.15) 0%, transparent 50%), radial-gradient(ellipse 60% 40% at 80% 60%, rgba(56, 189, 248, 0.12) 0%, transparent 50%)',
+            ],
+          }}
+          transition={{
+            duration: 15,
+            repeat: Infinity,
+            ease: 'easeInOut',
+          }}
+        />
+
+        {/* Second flowing layer */}
+        <motion.div
+          className="absolute inset-0 opacity-40"
+          animate={{
+            background: [
+              'radial-gradient(ellipse 70% 60% at 70% 20%, rgba(125, 211, 252, 0.2) 0%, transparent 50%)',
+              'radial-gradient(ellipse 70% 60% at 40% 50%, rgba(125, 211, 252, 0.2) 0%, transparent 50%)',
+              'radial-gradient(ellipse 70% 60% at 60% 80%, rgba(125, 211, 252, 0.2) 0%, transparent 50%)',
+              'radial-gradient(ellipse 70% 60% at 70% 20%, rgba(125, 211, 252, 0.2) 0%, transparent 50%)',
+            ],
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            ease: 'easeInOut',
+          }}
+        />
+
+        {/* Mouse-following orbs */}
         <motion.div
           animate={{
             x: mousePosition.x,
@@ -172,17 +209,17 @@ export default function Hero() {
           className="absolute inset-0"
         >
           <FloatingOrb
-            className="w-[280px] h-[280px] sm:w-[400px] sm:h-[400px] lg:w-[600px] lg:h-[600px] -top-32 -right-32 sm:-top-48 sm:-right-48 bg-gradient-to-br from-sky-200/40 to-blue-200/30"
+            className="w-[280px] h-[280px] sm:w-[400px] sm:h-[400px] lg:w-[600px] lg:h-[600px] -top-32 -right-32 sm:-top-48 sm:-right-48 bg-gradient-to-br from-sky-200/30 to-blue-200/20"
             delay={0}
             parallaxY={smoothY1}
           />
           <FloatingOrb
-            className="w-[200px] h-[200px] sm:w-[300px] sm:h-[300px] lg:w-[400px] lg:h-[400px] top-1/3 -left-24 sm:-left-32 bg-gradient-to-br from-blue-200/30 to-cyan-200/20"
+            className="w-[200px] h-[200px] sm:w-[300px] sm:h-[300px] lg:w-[400px] lg:h-[400px] top-1/3 -left-24 sm:-left-32 bg-gradient-to-br from-blue-200/20 to-cyan-200/15"
             delay={0.2}
             parallaxY={smoothY2}
           />
           <FloatingOrb
-            className="w-[180px] h-[180px] sm:w-[240px] sm:h-[240px] lg:w-[300px] lg:h-[300px] bottom-32 right-1/4 bg-gradient-to-br from-cyan-200/25 to-sky-200/20"
+            className="w-[180px] h-[180px] sm:w-[240px] sm:h-[240px] lg:w-[300px] lg:h-[300px] bottom-32 right-1/4 bg-gradient-to-br from-cyan-200/20 to-sky-200/15"
             delay={0.4}
             parallaxY={smoothY3}
           />
@@ -203,7 +240,7 @@ export default function Hero() {
         {/* Title */}
         <div className="overflow-hidden">
           <motion.h1
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold tracking-tight text-gray-900"
+            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight text-gray-900"
           >
             <motion.span
               initial={{ y: 100, opacity: 0 }}
