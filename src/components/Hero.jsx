@@ -75,10 +75,11 @@ const LogoCarousel = () => {
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 1.4 }}
         className="relative"
+        style={{
+          maskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent)',
+          WebkitMaskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent)',
+        }}
       >
-        {/* Fade edges */}
-        <div className="absolute left-0 top-0 bottom-0 w-12 sm:w-20 lg:w-32 bg-gradient-to-r from-[#fafafa] to-transparent z-10" />
-        <div className="absolute right-0 top-0 bottom-0 w-12 sm:w-20 lg:w-32 bg-gradient-to-l from-[#fafafa] to-transparent z-10" />
 
         {/* Mobile: Dual carousels */}
         <div className="md:hidden">
