@@ -3,15 +3,15 @@ import { useEffect, useState } from 'react';
 import MagneticButton from './MagneticButton';
 
 const companyLogos = [
-  { name: 'XBTO', logo: 'https://images.seeklogo.com/logo-png/43/1/xbto-logo-png_seeklogo-432078.png' },
-  { name: 'Tether', logo: 'https://cryptologos.cc/logos/tether-usdt-logo.png' },
-  { name: 'Goldman Sachs', logo: 'https://images.seeklogo.com/logo-png/6/1/goldman-sachs-logo-png_seeklogo-61965.png' },
-  { name: 'Antler', logo: 'https://cdn.prod.website-files.com/68c1084e137e63873a526f0f/690047f528e289c32777fb9c_antler-logo-mark.png' },
-  { name: 'Khalifa University', logo: 'https://crystalpng.com/wp-content/uploads/2025/11/Khalifa-University-Logo.png' },
-  { name: 'Huawei', logo: 'https://images.seeklogo.com/logo-png/6/2/huawei-logo-png_seeklogo-68529.png' },
+  { name: 'XBTO', logo: '/logos/xbto.png' },
+  { name: 'Tether', logo: '/logos/tether.png' },
+  { name: 'Goldman Sachs', logo: '/logos/goldman-sachs.png' },
+  { name: 'Antler', logo: '/logos/antler.png' },
+  { name: 'Khalifa University', logo: '/logos/khalifa-university.png' },
+  { name: 'Huawei', logo: '/logos/huawei.png' },
   { name: 'Nokia Bell Labs', logo: 'https://media.licdn.com/dms/image/v2/D4E0BAQGKolmYRTf1uQ/company-logo_200_200/company-logo_200_200/0/1738848703564/nokiabelllabs_logo?e=2147483647&v=beta&t=llk9AEjdCbZMXgb_RoOLYJZz2MONrkjUz1qXlG0CgLM' },
-  { name: 'HSBC', logo: 'https://www.pngarts.com/files/1/HSBC-Logo-Transparent-Image.png' },
-  { name: 'Google', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/500px-Google_%22G%22_logo.svg.png' },
+  { name: 'HSBC', logo: '/logos/hsbc.png' },
+  { name: 'Google', logo: '/logos/google.png' },
 ];
 
 const FloatingOrb = ({ className, delay = 0, parallaxY }) => (
@@ -128,6 +128,15 @@ const LogoCarousel = () => {
 
 export default function Hero() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Detect mobile for disabling animations
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 640);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   // Parallax effect using scroll
   const { scrollY } = useScroll();
@@ -164,10 +173,10 @@ export default function Hero() {
     <section className="relative min-h-[85vh] sm:min-h-screen flex flex-col justify-center items-center px-4 sm:px-6 pt-20 sm:pt-24 pb-8 sm:pb-16 overflow-hidden bg-[#fafafa]">
       {/* Animated Flowing Background */}
       <div className="absolute inset-0 overflow-hidden">
-        {/* Flowing blob 1 - moves diagonally */}
+        {/* Flowing blob 1 - moves diagonally (static on mobile) */}
         <motion.div
           className="absolute w-[600px] h-[600px] sm:w-[800px] sm:h-[800px] rounded-full bg-gradient-to-br from-sky-300/50 to-blue-400/40 blur-3xl"
-          animate={{
+          animate={isMobile ? {} : {
             x: ['-20%', '30%', '10%', '-20%'],
             y: ['10%', '40%', '70%', '10%'],
             scale: [1, 1.1, 0.95, 1],
@@ -180,10 +189,10 @@ export default function Hero() {
           style={{ top: '-20%', left: '-10%' }}
         />
 
-        {/* Flowing blob 2 - moves opposite direction */}
+        {/* Flowing blob 2 - moves opposite direction (static on mobile) */}
         <motion.div
           className="absolute w-[500px] h-[500px] sm:w-[700px] sm:h-[700px] rounded-full bg-gradient-to-br from-cyan-300/45 to-sky-400/35 blur-3xl"
-          animate={{
+          animate={isMobile ? {} : {
             x: ['60%', '20%', '50%', '60%'],
             y: ['60%', '20%', '50%', '60%'],
             scale: [1, 0.9, 1.05, 1],
@@ -196,10 +205,10 @@ export default function Hero() {
           style={{ top: '20%', right: '-20%' }}
         />
 
-        {/* Flowing blob 3 - slower, larger */}
+        {/* Flowing blob 3 - slower, larger (static on mobile) */}
         <motion.div
           className="absolute w-[400px] h-[400px] sm:w-[600px] sm:h-[600px] rounded-full bg-gradient-to-br from-blue-300/40 to-cyan-300/30 blur-3xl"
-          animate={{
+          animate={isMobile ? {} : {
             x: ['30%', '-10%', '40%', '30%'],
             y: ['70%', '30%', '50%', '70%'],
             scale: [1.05, 1, 1.1, 1.05],
@@ -227,7 +236,8 @@ export default function Hero() {
         {/* Title */}
         <div className="overflow-hidden">
           <motion.h1
-            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight text-gray-900"
+            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight text-gray-900"
+            style={{ fontFamily: 'Gambetta, serif', fontWeight: 300 }}
           >
             <motion.span
               initial={{ y: 100, opacity: 0 }}
@@ -235,13 +245,13 @@ export default function Hero() {
               transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
               className="block"
             >
-              The Agentic
+              The <span className="text-sky-500 italic" style={{ fontWeight: 500 }}>Agentic</span>
             </motion.span>
             <motion.span
               initial={{ y: 100, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 1, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
-              className="block gradient-text"
+              className="block"
             >
               Payment Stack
             </motion.span>

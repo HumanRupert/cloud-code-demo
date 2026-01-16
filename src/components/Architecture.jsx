@@ -4,30 +4,12 @@ import { ChevronDown } from 'lucide-react';
 
 // Agent data with logos
 const agents = [
-  {
-    name: 'LangChain',
-    logo: 'https://images.seeklogo.com/logo-png/61/1/langchain-icon-logo-png_seeklogo-611655.png'
-  },
-  {
-    name: 'Google ADK',
-    logo: 'https://google.github.io/adk-docs/assets/agent-development-kit.png'
-  },
-  {
-    name: 'Gemini',
-    logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Google_Gemini_icon_2025.svg/960px-Google_Gemini_icon_2025.svg.png'
-  },
-  {
-    name: 'Claude',
-    logo: 'https://upload.wikimedia.org/wikipedia/commons/b/b0/Claude_AI_symbol.svg'
-  },
-  {
-    name: 'ChatGPT',
-    logo: 'https://static.vecteezy.com/system/resources/previews/021/059/827/non_2x/chatgpt-logo-chat-gpt-icon-on-white-background-free-vector.jpg'
-  },
-  {
-    name: 'OpenAI SDK',
-    logo: 'https://us1.discourse-cdn.com/openai1/original/4X/3/2/1/321a1ba297482d3d4060d114860de1aa5610f8a9.png'
-  },
+  { name: 'LangChain', logo: '/logos/langchain.png' },
+  { name: 'Google ADK', logo: '/logos/google-adk.png' },
+  { name: 'Gemini', logo: '/logos/gemini.png' },
+  { name: 'Claude', logo: '/logos/claude.svg' },
+  { name: 'ChatGPT', logo: '/logos/chatgpt.jpg' },
+  { name: 'OpenAI SDK', logo: '/logos/openai-agents.png' },
 ];
 
 // Payment infrastructure grouped by category
@@ -35,22 +17,22 @@ const paymentGroups = [
   {
     category: 'PSPs',
     items: [
-      { name: 'Stripe', logo: 'https://images.seeklogo.com/logo-png/29/1/stripe-logo-png_seeklogo-290635.png' },
-      { name: 'Adyen', logo: 'https://images.seeklogo.com/logo-png/31/1/adyen-logo-png_seeklogo-316102.png' },
+      { name: 'Stripe', logo: '/logos/stripe.png' },
+      { name: 'Adyen', logo: '/logos/adyen.png' },
     ],
   },
   {
     category: 'Card Networks',
     items: [
-      { name: 'Visa Intelligent Commerce', logo: 'https://images.seeklogo.com/logo-png/14/1/visa-logo-png_seeklogo-149697.png' },
-      { name: 'Mastercard Agent Pay', logo: 'https://download.logo.wine/logo/Mastercard/Mastercard-Logo.wine.png' },
+      { name: 'Visa Intelligent Commerce', logo: '/logos/visa.png' },
+      { name: 'Mastercard Agent Pay', logo: '/logos/mastercard.png' },
     ],
   },
   {
     category: 'BNPL',
     items: [
       { name: 'Tamara', logo: 'https://media.licdn.com/dms/image/v2/D4D0BAQEJB3vk5iGuFg/company-logo_200_200/B4DZkAT60sIEAI-/0/1756646846578/tamara_logo?e=2147483647&v=beta&t=jQTR3kO66w_lWVaUTIYVwwNkzYh0EwwEqep1tuR2Wuw' },
-      { name: 'Tabby', logo: 'https://s3-eu-west-1.amazonaws.com/tpd/logos/60110918897a86000191df7e/0x0.png' },
+      { name: 'Tabby', logo: '/logos/tabby.png' },
     ],
   },
   {
@@ -64,16 +46,16 @@ const paymentGroups = [
   {
     category: 'Digital Assets',
     items: [
-      { name: 'USDT', logo: 'https://cryptologos.cc/logos/tether-usdt-logo.png' },
-      { name: 'BTC', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Bitcoin.svg/1280px-Bitcoin.svg.png' },
-      { name: 'ETH', logo: 'https://images.seeklogo.com/logo-png/40/1/ethereum-logo-png_seeklogo-407463.png' },
+      { name: 'USDT', logo: '/logos/usdt.png' },
+      { name: 'BTC', logo: '/logos/btc.png' },
+      { name: 'ETH', logo: '/logos/eth.png' },
     ],
   },
   {
     category: 'Instant Payments',
     items: [
-      { name: 'Aani', logo: 'https://aep.ae/media/e5udt2yc/asset-2-1.svg' },
-      { name: 'Pix', logo: 'https://img.icons8.com/color/1200/pix.jpg' },
+      { name: 'Aani', logo: '/logos/aani.svg' },
+      { name: 'Pix', logo: '/logos/pix.jpg' },
     ],
   },
 ];
