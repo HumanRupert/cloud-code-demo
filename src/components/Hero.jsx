@@ -1,6 +1,8 @@
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import MagneticButton from './MagneticButton';
+import BlurText from './ui/BlurText';
+import Aurora from './ui/Aurora';
 
 const companyLogos = [
   { name: 'XBTO', logo: '/logos/xbto.png' },
@@ -134,55 +136,18 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-[85vh] sm:min-h-screen flex flex-col justify-center items-center px-4 sm:px-6 pt-20 sm:pt-24 pb-8 sm:pb-16 overflow-hidden bg-[#fafafa]">
-      {/* Animated Flowing Background */}
+      {/* Aurora Background - desktop only, static gradient on mobile */}
       <div className="absolute inset-0 overflow-hidden">
-        {/* Flowing blob 1 - moves diagonally (static on mobile) */}
-        <motion.div
-          className="absolute w-[600px] h-[600px] sm:w-[800px] sm:h-[800px] rounded-full bg-gradient-to-br from-sky-300/50 to-blue-400/40 blur-3xl"
-          animate={isMobile ? {} : {
-            x: ['-20%', '30%', '10%', '-20%'],
-            y: ['10%', '40%', '70%', '10%'],
-            scale: [1, 1.1, 0.95, 1],
-          }}
-          transition={{
-            duration: 15,
-            repeat: Infinity,
-            ease: 'easeInOut',
-          }}
-          style={{ top: '-20%', left: '-10%' }}
-        />
-
-        {/* Flowing blob 2 - moves opposite direction (static on mobile) */}
-        <motion.div
-          className="absolute w-[500px] h-[500px] sm:w-[700px] sm:h-[700px] rounded-full bg-gradient-to-br from-cyan-300/45 to-sky-400/35 blur-3xl"
-          animate={isMobile ? {} : {
-            x: ['60%', '20%', '50%', '60%'],
-            y: ['60%', '20%', '50%', '60%'],
-            scale: [1, 0.9, 1.05, 1],
-          }}
-          transition={{
-            duration: 18,
-            repeat: Infinity,
-            ease: 'easeInOut',
-          }}
-          style={{ top: '20%', right: '-20%' }}
-        />
-
-        {/* Flowing blob 3 - slower, larger (static on mobile) */}
-        <motion.div
-          className="absolute w-[400px] h-[400px] sm:w-[600px] sm:h-[600px] rounded-full bg-gradient-to-br from-blue-300/40 to-cyan-300/30 blur-3xl"
-          animate={isMobile ? {} : {
-            x: ['30%', '-10%', '40%', '30%'],
-            y: ['70%', '30%', '50%', '70%'],
-            scale: [1.05, 1, 1.1, 1.05],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: 'easeInOut',
-          }}
-          style={{ bottom: '-10%', left: '20%' }}
-        />
+        {!isMobile ? (
+          <Aurora
+            colorStops={['#38bdf8', '#3b82f6', '#06b6d4']}
+            amplitude={1.2}
+            speed={0.4}
+          />
+        ) : (
+          /* Static gradient fallback for mobile */
+          <div className="absolute inset-0 bg-gradient-to-br from-sky-200/40 via-blue-100/30 to-cyan-200/40" />
+        )}
 
         {/* Grid pattern overlay */}
         <div
@@ -196,30 +161,30 @@ export default function Hero() {
 
       {/* Content */}
       <div className="relative z-10 w-full max-w-5xl mx-auto text-center px-4">
-        {/* Title */}
-        <div className="overflow-hidden">
-          <motion.h1
-            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight text-gray-900"
-            style={{ fontFamily: 'Gambetta, serif', fontWeight: 400 }}
-          >
-            <motion.span
-              initial={{ y: 100, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-              className="block"
+        {/* Title with BlurText animation */}
+        <h1
+          className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight text-gray-900"
+          style={{ fontFamily: 'Gambetta, serif', fontWeight: 400 }}
+        >
+          <span className="block">
+            <BlurText delay={0.2} staggerDelay={0.1} animateBy="words">
+              The
+            </BlurText>{' '}
+            <BlurText
+              delay={0.3}
+              staggerDelay={0.1}
+              animateBy="words"
+              className="gradient-text italic pr-3"
             >
-              The <span className="gradient-text italic pr-3" style={{ fontWeight: 600 }}>Agentic</span>
-            </motion.span>
-            <motion.span
-              initial={{ y: 100, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 1, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
-              className="block"
-            >
+              <span style={{ fontWeight: 600 }}>Agentic</span>
+            </BlurText>
+          </span>
+          <span className="block">
+            <BlurText delay={0.5} staggerDelay={0.1} animateBy="words">
               Payment Stack
-            </motion.span>
-          </motion.h1>
-        </div>
+            </BlurText>
+          </span>
+        </h1>
 
         {/* Subtitle */}
         <motion.p

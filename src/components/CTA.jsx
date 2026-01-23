@@ -2,6 +2,7 @@ import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import MagneticButton from './MagneticButton';
+import BlurText from './ui/BlurText';
 
 export default function CTA() {
   const ref = useRef(null);
@@ -47,19 +48,28 @@ export default function CTA() {
       />
 
       <div className="max-w-3xl mx-auto text-center relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        >
+        <div>
           <h2
             className="text-4xl sm:text-5xl md:text-6xl text-gray-900 mb-6"
             style={{ fontFamily: 'Gambetta, serif', fontWeight: 400 }}
           >
-            Ready for{' '} <br></br>
-            <span className="gradient-text italic pr-3" style={{ fontWeight: 600 }}>Agentic Commerce</span>?
+            <BlurText delay={0.2} staggerDelay={0.1} animateBy="words">
+              Ready for
+            </BlurText>
+            <br />
+            <BlurText
+              delay={0.4}
+              staggerDelay={0.1}
+              animateBy="words"
+              className="gradient-text italic pr-3"
+            >
+              <span style={{ fontWeight: 600 }}>Agentic Commerce</span>
+            </BlurText>
+            <BlurText delay={0.7} staggerDelay={0.1} animateBy="words">
+              ?
+            </BlurText>
           </h2>
-        </motion.div>
+        </div>
 
         <motion.p
           initial={{ opacity: 0, y: 30 }}

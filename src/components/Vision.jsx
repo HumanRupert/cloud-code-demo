@@ -2,6 +2,7 @@ import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { Shield, Lock, Zap, ClipboardList } from 'lucide-react';
 import { use3DTilt } from '../hooks/use3DTilt';
+import BlurText from './ui/BlurText';
 
 const cards = [
   {
@@ -114,16 +115,23 @@ export default function Vision() {
             Agents are graduating from simple tasks to complex workflows — browsing, negotiating, transacting. But when it's time to pay, they hit a wall.
           </motion.p>
 
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={isIntroInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900 leading-tight font-display"
-          >
-            Semantic is the missing layer between{' '}
-            <span className="gradient-text">agent intent</span> and{' '}
-            <span className="gradient-text">financial infrastructure</span>.
-          </motion.p>
+          <p className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900 leading-tight font-display">
+            <BlurText delay={0.4} staggerDelay={0.05} animateBy="words">
+              Semantic is the missing layer between
+            </BlurText>{' '}
+            <BlurText delay={0.8} staggerDelay={0.05} animateBy="words" className="gradient-text">
+              agent intent
+            </BlurText>{' '}
+            <BlurText delay={1.0} staggerDelay={0.05} animateBy="words">
+              and
+            </BlurText>{' '}
+            <BlurText delay={1.1} staggerDelay={0.05} animateBy="words" className="gradient-text">
+              financial infrastructure
+            </BlurText>
+            <BlurText delay={1.4} staggerDelay={0.05} animateBy="words">
+              .
+            </BlurText>
+          </p>
         </motion.div>
 
         {/* Cards Grid */}

@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react';
 import { motion, AnimatePresence, useInView } from 'framer-motion';
 import { ShoppingCart, CreditCard, Code, Store, Globe, Shield, Wallet, Coins, Layers, FastForward } from 'lucide-react';
+import BlurText from './ui/BlurText';
 
 const tabs = [
   { id: 'ecommerce', label: 'Ecommerce Platforms', shortLabel: 'Ecommerce', icon: Store },
@@ -132,16 +133,13 @@ export default function Features() {
     <section id="product" ref={ref} className="py-16 sm:py-24 lg:py-32 px-4 sm:px-6 bg-white">
       <div className="max-w-5xl mx-auto">
         {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="text-center mb-16"
-        >
+        <div className="text-center mb-16">
           <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
-            What Semantic Does for You
+            <BlurText delay={0.2} staggerDelay={0.08} animateBy="words">
+              What Semantic Does for You
+            </BlurText>
           </h2>
-        </motion.div>
+        </div>
 
         {/* Tab Buttons */}
         <motion.div
