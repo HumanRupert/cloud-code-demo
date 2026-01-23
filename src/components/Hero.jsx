@@ -140,13 +140,13 @@ export default function Hero() {
       <div className="absolute inset-0 overflow-hidden">
         {!isMobile ? (
           <Aurora
-            colorStops={['#38bdf8', '#3b82f6', '#06b6d4']}
-            amplitude={1.2}
-            speed={0.4}
+            colorStops={['#e0f2fe', '#bae6fd', '#7dd3fc']}
+            amplitude={1.0}
+            speed={0.3}
           />
         ) : (
           /* Static gradient fallback for mobile */
-          <div className="absolute inset-0 bg-gradient-to-br from-sky-200/40 via-blue-100/30 to-cyan-200/40" />
+          <div className="absolute inset-0 bg-gradient-to-br from-sky-100/50 via-white to-blue-50/40" />
         )}
 
         {/* Grid pattern overlay */}
@@ -175,8 +175,9 @@ export default function Hero() {
               staggerDelay={0.1}
               animateBy="words"
               className="gradient-text italic pr-3"
+              style={{ fontWeight: 600 }}
             >
-              <span style={{ fontWeight: 600 }}>Agentic</span>
+              Agentic
             </BlurText>
           </span>
           <span className="block">

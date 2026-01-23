@@ -62,8 +62,9 @@ export default function CTA() {
               staggerDelay={0.1}
               animateBy="words"
               className="gradient-text italic pr-3"
+              style={{ fontWeight: 600 }}
             >
-              <span style={{ fontWeight: 600 }}>Agentic Commerce</span>
+              Agentic Commerce
             </BlurText>
             <BlurText delay={0.7} staggerDelay={0.1} animateBy="words">
               ?

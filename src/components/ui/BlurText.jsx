@@ -8,6 +8,7 @@ import { motion, useInView, useAnimation } from 'framer-motion';
 export default function BlurText({
   children,
   className = '',
+  style = {},
   delay = 0,
   duration = 0.5,
   staggerDelay = 0.08,
@@ -66,6 +67,7 @@ export default function BlurText({
     <motion.span
       ref={ref}
       className={`inline-block ${className}`}
+      style={style}
       variants={containerVariants}
       initial="hidden"
       animate={controls}
