@@ -6,7 +6,6 @@ import Aurora from './ui/Aurora';
 
 const companyLogos = [
   { name: 'XBTO', logo: '/logos/xbto.png' },
-  { name: 'Tether', logo: '/logos/tether.png' },
   { name: 'Goldman Sachs', logo: '/logos/goldman-sachs.png' },
   { name: 'Antler', logo: '/logos/antler.png' },
   { name: 'Khalifa University', logo: '/logos/khalifa-university.png' },
