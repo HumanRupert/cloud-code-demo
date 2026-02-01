@@ -4,14 +4,13 @@ import MagneticButton from './MagneticButton';
 
 const companyLogos = [
   { name: 'XBTO', logo: '/logos/xbto.png' },
-  { name: 'Tether', logo: '/logos/tether.png' },
-  { name: 'Goldman Sachs', logo: '/logos/goldman-sachs.png' },
   { name: 'Antler', logo: '/logos/antler.png' },
   { name: 'Khalifa University', logo: '/logos/khalifa-university.png' },
   { name: 'Huawei', logo: '/logos/huawei.png' },
   { name: 'Nokia Bell Labs', logo: 'https://media.licdn.com/dms/image/v2/D4E0BAQGKolmYRTf1uQ/company-logo_200_200/company-logo_200_200/0/1738848703564/nokiabelllabs_logo?e=2147483647&v=beta&t=llk9AEjdCbZMXgb_RoOLYJZz2MONrkjUz1qXlG0CgLM' },
   { name: 'HSBC', logo: '/logos/hsbc.png' },
   { name: 'Google', logo: '/logos/google.png' },
+  { name: 'Credit Agricole', logo: '/logos/ca.png' },
 ];
 
 const FloatingOrb = ({ className, delay = 0, parallaxY }) => (
