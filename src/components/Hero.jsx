@@ -10,7 +10,7 @@ const companyLogos = [
   { name: 'Nokia Bell Labs', logo: 'https://media.licdn.com/dms/image/v2/D4E0BAQGKolmYRTf1uQ/company-logo_200_200/company-logo_200_200/0/1738848703564/nokiabelllabs_logo?e=2147483647&v=beta&t=llk9AEjdCbZMXgb_RoOLYJZz2MONrkjUz1qXlG0CgLM' },
   { name: 'HSBC', logo: '/logos/hsbc.png' },
   { name: 'Google', logo: '/logos/google.png' },
-  { name: 'Credit Agricole', logo: '/logos/ca.png' },
+  { name: 'Credit Agricole', logo: 'https://upload.wikimedia.org/wikipedia/en/thumb/a/a6/Cr%C3%A9dit_Agricole.svg/3840px-Cr%C3%A9dit_Agricole.svg.png' },
 ];
 
 const FloatingOrb = ({ className, delay = 0, parallaxY }) => (
